@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zidhugram - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @font-face {
+      font-family: 'Link Sans Black';
+      src: url('/fonts/linik-sans.black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Playfair+Display:wght@400;700&display=swap');
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background-color: #FFFFFF; /* Pure white for minimal aesthetic */
+      color: #000000; /* Jet black for text */
+    }
+    .typewriter h1 {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end);
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    .mono-border {
+      border: 2px solid #333333; /* Dark gray border */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    .hover-glow:hover {
+      box-shadow: 0 0 15px rgba(51, 51, 51, 0.5); /* Dark gray glow */
+    }
+    /* Hide scrollbar for a cleaner look on mobile */
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .logo-font {
+      font-family: 'Link Sans Black', 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-[#000000] text-white py-4 px-4 sm:px-6 flex justify-between items-center">
+    <div class="typewriter">
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold logo-font">Zidhugram</h1>
+    </div>
+    <button id="menu-toggle" class="sm:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <nav id="nav-menu" class="hidden sm:flex sm:space-x-4">
+      <a href="#about" class="text-sm sm:text-base hover:text-[#D3D3D3] transition">About</a>
+      <a href="#github" class="text-sm sm:text-base hover:text-[#D3D3D3] transition">GitHub</a>
+      <a href="#projects" class="text-sm sm:text-base hover:text-[#D3D3D3] transition">Projects</a>
+      <a href="#contact" class="text-sm sm:text-base hover:text-[#D3D3D3] transition">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden sm:hidden bg-[#000000] text-white py-4 px-4">
+    <nav class="flex flex-col space-y-4">
+      <a href="#about" class="text-sm hover:text-[#D3D3D3] transition">About</a>
+      <a href="#github" class="text-sm hover:text-[#D3D3D3] transition">GitHub</a>
+      <a href="#projects" class="text-sm hover:text-[#D3D3D3] transition">Projects</a>
+      <a href="#contact" class="text-sm hover:text-[#D3D3D3] transition">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="flex-1 flex items-center justify-center py-8 sm:py-12 px-4">
+    <div class="text-center max-w-lg sm:max-w-2xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-['Playfair_Display'] mb-4">Hello, I'm Zidhu</h2>
+      <p class="text-base sm:text-lg md:text-xl text-[#000000] mb-6">
+        A passionate programmer and hacker crafting elegant code with a timeless soul.
+      </p>
+      <a href="#projects" class="inline-block bg-[#333333] text-white py-2 px-4 text-sm sm:text-base rounded mono-border hover-glow transition">
+        Explore My Work
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="bg-[#D3D3D3] py-8 sm:py-12 px-4">
+    <div class="max-w-lg sm:max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] mb-6">About Me</h3>
+      <p class="text-sm sm:text-base text-[#000000] mb-4">
+        I'm a coder with a knack for solving complex problems and a love for minimal, aesthetic designs. My work blends cutting-edge tech with a classic, monochromatic vibe, inspired by late-night coding sessions.
+      </p>
+      <p class="text-sm sm:text-base text-[#000000]">
+        Skills: Python, JavaScript, C++, Ethical Hacking, Web Development
+      </p>
+    </div>
+  </section>
+
+  <!-- Identity Section -->
+  <section id="identity" class="py-8 sm:py-12 px-4">
+    <div class="max-w-lg sm:max-w-4xl mx-auto">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-center mb-8">What I Am</h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">CODER</h4>
+          <p class="text-sm sm:text-base text-[#000000]">Crafting clean, efficient code to bring ideas to life.</p>
+        </div>
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">HACKER</h4>
+          <p class="text-sm sm:text-base text-[#000000]">Exploring systems ethically to uncover hidden possibilities.</p>
+        </div>
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">PROGRAMMER</h4>
+          <p class="text-sm sm:text-base text-[#000000]">Building robust solutions with logic and creativity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Section -->
+  <section id="github" class="bg-[#FFFFFF] py-8 sm:py-12 px-4">
+    <div class="max-w-lg sm:max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] mb-6">My GitHub Journey</h3>
+      <p class="text-sm sm:text-base text-[#000000] mb-6">
+        As a GitHub enthusiast, I live for open-source contributions, late-night commits, and building projects that matter. Check out my activity below!
+      </p>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">GitHub Stats</h4>
+          <img src="https://github-readme-stats.vercel.app/api?username=zidhugram&show_icons=true&theme=grayscale&hide_border=true&text_color=000000&title_color=333333&icon_color=333333" alt="GitHub Stats" class="mx-auto w-full max-w-[300px] sm:max-w-full">
+        </div>
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">Top Languages</h4>
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=zidhugram&layout=compact&theme=grayscale&hide_border=true&text_color=000000&title_color=333333&icon_color=333333" alt="Top Languages" class="mx-auto w-full max-w-[300px] sm:max-w-full">
+        </div>
+      </div>
+      <p class="mt-6 text-sm sm:text-base text-[#000000]">
+        Visit my GitHub: <a href="https://github.com/zidhugram" class="text-[#333333] hover:underline">@zidhugram</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-8 sm:py-12 px-4">
+    <div class="max-w-lg sm:max-w-4xl mx-auto">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-center mb-8">Projects</h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">CodeVault</h4>
+          <p class="text-sm sm:text-base text-[#000000] mb-4">A secure, encrypted note-taking app for coders, built with Python and Flask.</p>
+          <a href="#" class="text-[#333333] hover:underline text-sm sm:text-base">View Project</a>
+        </div>
+        <div class="bg-[#D3D3D3] p-4 sm:p-6 rounded mono-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">RetroTerm</h4>
+          <p class="text-sm sm:text-base text-[#000000] mb-4">A terminal emulator with a classic aesthetic, coded in C++ and JavaScript.</p>
+          <a href="#" class="text-[#333333] hover:underline text-sm sm:text-base">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-[#000000] text-white py-8 sm:py-12 px-4">
+    <div class="max-w-lg sm:max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] mb-6">Get in Touch</h3>
+      <p class="text-sm sm:text-base mb-4">Interested in collaborating or just want to chat about code? Reach out!</p>
+      <p class="text-sm sm:text-base">Email: <a href="mailto:zidhu@zidhugram.com" class="underline hover:text-[#D3D3D3]">zidhu@zidhugram.com</a></p>
+      <p class="text-sm sm:text-base">GitHub: <a href="https://github.com/zidhugram" class="underline hover:text-[#D3D3D3]">@zidhugram</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#333333] text-white text-center py-4">
+    <p class="text-sm sm:text-base">© 2025 Zidhugram. Crafted with code and coffee.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        // Close mobile menu after clicking a link
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
