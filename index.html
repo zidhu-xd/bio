@@ -1,7 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zidhugram - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* CSS Reset for consistency */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'Link Sans Black';
+      src: url('/fonts/linik-sans.black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap');
+
+    /* Base styles */
+    body {
+      font-family: 'Lora', serif;
+      background: #E8ECEF;
+      color: #2E3440;
+      transition: all 0.2s ease;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header, #mobile-menu, #contact, footer {
+      background-color: #2E3440;
+      color: #E8ECEF;
+    }
+
+    .pixel-bg {
+      background-color: rgba(216, 222, 233, 0.9);
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAFElEQVQImQXBQQ4AIAwDwP+TB8x9AwA0WA3B7M1R1gAAAABJRU5ErkJggg==');
+      background-size: 4px 4px;
+      border-radius: 4px;
+    }
+
+    .pixel-border {
+      border: 2px solid #00FF00;
+      border-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAJUlEQVQYV2NkYGD4z8DAwMDAwMBhYGAwMDAwMDAwMBgYGBgYGBgBALo9B7Q3k2o4AAAAAElFTkSuQmCC') 8;
+      border-radius: 4px;
+    }
+
+    .hover-glow:hover {
+      border-color: #00CC00;
+    }
+
+    .pixel-button {
+      background-color: #00FF00;
+      color: #2E3440;
+      border-radius: 4px;
+    }
+
+    .pixel-button:hover {
+      background-color: #00CC00;
+    }
+
+    a {
+      color: #00FF00;
+    }
+
+    a:hover {
+      color: #00CC00;
+    }
+
+    h3::before, h3::after {
+      content: '✸';
+      display: inline-block;
+      margin: 0 8px;
+      color: #00FF00;
+      font-size: 1.1em;
+    }
+
+    /* Hide scrollbar for a cleaner look */
+    body::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Font styles */
+    .logo-font {
+      font-family: 'Link Sans Black', 'Playfair Display', serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="py-4 px-4 sm:px-6 flex justify-between items-center">
+    <div>
+      <h1 class="text-xl sm:text-2xl md:text-3xl font-bold logo-font">Zidhugram</h1>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button id="menu-toggle" class="sm:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+    <nav id="nav-menu" class="hidden sm:flex sm:space-x-4">
+      <a href="#about" class="text-sm sm:text-base hover:underline transition">About</a>
+      <a href="#achievements" class="text-sm sm:text-base hover:underline transition">Achievements</a>
+      <a href="#contact" class="text-sm sm:text-base hover:underline transition">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden sm:hidden py-4 px-4">
+    <nav class="flex flex-col space-y-4">
+      <a href="#about" class="text-sm hover:underline transition">About</a>
+      <a href="#achievements" class="text-sm hover:underline transition">Achievements</a>
+      <a href="#contact" class="text-sm hover:underline transition">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="home" class="flex-1 flex items-center justify-center py-6 sm:py-8 px-4">
+    <div class="text-center max-w-lg sm:max-w-3xl">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-['Playfair_Display'] mb-4">Hello, I'm Zidhu</h2>
+      <p class="text-base sm:text-lg md:text-xl mb-6">
+        A passionate programmer and hacker crafting elegant code with a timeless soul.
+      </p>
+      <a href="#achievements" class="inline-block pixel-button py-2 px-4 text-sm sm:text-base rounded pixel-border hover-glow transition">
+        Explore My Work
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="pixel-bg py-6 sm:py-8 px-4">
+    <div class="max-w-lg sm:max-w-3xl mx-auto text-center">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] mb-6">About Me</h3>
+      <p class="text-sm sm:text-base mb-4">
+        I'm a coder with a knack for solving complex problems and a love for minimal, aesthetic designs. My work blends cutting-edge tech with a classic, monochromatic vibe, inspired by late-night coding sessions.
+      </p>
+      <p class="text-sm sm:text-base">
+        Skills: Python, JavaScript, C++, Ethical Hacking, Web Development
+      </p>
+    </div>
+  </section>
+
+  <!-- Identity Section -->
+  <section id="identity" class="pixel-bg py-6 sm:py-8 px-4">
+    <div class="max-w-lg sm:max-w-3xl mx-auto">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-center mb-8">What I Am</h3>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">CODER</h4>
+          <p class="text-sm sm:text-base">Crafting clean, efficient code to bring ideas to life.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">HACKER</h4>
+          <p class="text-sm sm:text-base">Exploring systems ethically to uncover hidden possibilities.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">PROGRAMMER</h4>
+          <p class="text-sm sm:text-base">Building robust solutions with logic and creativity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="pixel-bg py-6 sm:py-8 px-4">
+    <div class="max-w-lg sm:max-w-3xl mx-auto">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-center mb-8">My Skills</h3>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">PROGRAMMER</h4>
+          <p class="text-sm sm:text-base">Writing robust and scalable software solutions.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">HACKER</h4>
+          <p class="text-sm sm:text-base">Mastering ethical hacking to secure systems.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">ENGINEER</h4>
+          <p class="text-sm sm:text-base">Designing innovative technical architectures.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">CODER</h4>
+          <p class="text-sm sm:text-base">Crafting elegant code with precision.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">CRACKER</h4>
+          <p class="text-sm sm:text-base">Analyzing systems to find vulnerabilities.</p>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow text-center">
+          <h4 class="text-xl sm:text-2xl font-['Playfair_Display'] mb-2">IoT ENTHUSIAST</h4>
+          <p class="text-sm sm:text-base">Building connected devices for the future.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="pixel-bg py-6 sm:py-8 px-4">
+    <div class="max-w-lg sm:max-w-3xl mx-auto">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] text-center mb-8">My Achievements</h3>
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">CodeVault</h4>
+          <p class="text-sm sm:text-base mb-4">A secure, encrypted note-taking app for coders, built with Python and Flask.</p>
+          <a href="#" class="hover:underline text-sm sm:text-base">View Project</a>
+        </div>
+        <div class="pixel-bg p-3 sm:p-4 rounded pixel-border hover-glow">
+          <h4 class="text-lg sm:text-xl font-['Playfair_Display'] mb-2">RetroTerm</h4>
+          <p class="text-sm sm:text-base mb-4">A terminal emulator with a classic aesthetic, coded in C++ and JavaScript.</p>
+          <a href="#" class="hover:underline text-sm sm:text-base">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-6 sm:py-8 px-4">
+    <div class="max-w-lg sm:max-w-3xl mx-auto text-center">
+      <h3 class="text-2xl sm:text-3xl font-['Playfair_Display'] mb-6">Get in Touch</h3>
+      <p class="text-sm sm:text-base mb-4">Interested in collaborating or just want to chat about code? Reach out!</p>
+      <p class="text-sm sm:text-base">Email: <a href="mailto:zidhu@zidhugram.com" class="underline">zidhu@zidhugram.com</a></p>
+      <p class="text-sm sm:text-base">GitHub: <a href="https://github.com/zidhugram" class="underline">@zidhugram</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-4">
+    <p class="text-sm sm:text-base">© 2025 Zidhugram. Crafted with code and coffee.</p>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        // Close mobile menu after clicking a link
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Toggle mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zidhugram - Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
