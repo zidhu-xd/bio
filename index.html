@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="weight=device-width, initial-scale=1.0">
     <title>Zidhugram - Digital Craftsman</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Red Hat Display for logo/main headings, Playfair Display for subheadings, IBM Plex Sans for body -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;900&family=Playfair+Display:wght@400;700&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome 6.6.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        /* Custom Tailwind Configuration - integrates recommended colors and fonts */
+        /* Custom Tailwind Configuration */
         tailwind.config = {
             theme: {
                 extend: {
@@ -47,7 +47,7 @@
             background-repeat: repeat;
         }
 
-        /* Custom style for the accent divider below headings */
+        /* Accent Divider */
         .section-heading::after {
             content: '';
             display: block;
@@ -58,7 +58,61 @@
             border-radius: 9999px;
         }
 
-        /* Hide scrollbar for a cleaner look */
+        /* Pixel Grid Background for About Me */
+        .pixel-bg {
+            background: linear-gradient(to right, #D3D3D3 1px, transparent 1px),
+                        linear-gradient(to bottom, #D3D3D3 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Slider Styles */
+        .slider {
+            position: relative;
+            overflow: hidden;
+        }
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .slide-content {
+            text-align: center;
+            padding: 1rem;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #4682B4;
+            cursor: pointer;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+
+        /* Ensure Icons are Visible */
+        .icon-visible {
+            display: inline-block !important;
+            visibility: visible !important;
+            min-width: 40px;
+            min-height: 40px;
+        }
+
+        /* Hide Scrollbar */
         body::-webkit-scrollbar {
             display: none;
         }
@@ -84,8 +138,6 @@
             </button>
             <nav id="nav-menu" class="hidden sm:flex sm:space-x-6">
                 <a href="#about" class="text-lg font-body hover:text-accent-blue transition-colors duration-200">About</a>
-                <a href="#github" class="text-lg font-body hover:text-accent-blue transition-colors duration-200">GitHub</a>
-                <a href="#projects" class="text-lg font-body hover:text-accent-blue transition-colors duration-200">Projects</a>
                 <a href="#contact" class="text-lg font-body hover:text-accent-blue transition-colors duration-200">Contact</a>
             </nav>
         </div>
@@ -95,8 +147,6 @@
     <div id="mobile-menu" class="hidden sm:hidden bg-primary-text text-primary-bg py-4 px-4 shadow-md">
         <nav class="flex flex-col space-y-4 text-center">
             <a href="#about" class="text-lg font-body hover:text-accent-blue transition-colors duration-200 py-2">About</a>
-            <a href="#github" class="text-lg font-body hover:text-accent-blue transition-colors duration-200 py-2">GitHub</a>
-            <a href="#projects" class="text-lg font-body hover:text-accent-blue transition-colors duration-200 py-2">Projects</a>
             <a href="#contact" class="text-lg font-body hover:text-accent-blue transition-colors duration-200 py-2">Contact</a>
         </nav>
     </div>
@@ -105,19 +155,17 @@
 
         <!-- Hero Section -->
         <section id="home" class="text-center mb-16">
-            <img src="images/zidhu-logo.png" alt="Zidhu Logo"
-                 class="w-36 h-36 sm:w-44 sm:h-44 rounded-full mx-auto mb-6 border-4 border-accent-blue shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
-            <h2 class="text-2xl sm:text-3xl font-display font-bold text-primary-text mb-4">Zidhu</h2>
+            <div class="flex items-center justify-center mb-6">
+                <img src="images/zidhu-logo.png" alt="Zidhu Logo" class="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-accent-blue shadow-lg mr-4 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                <h2 class="text-2xl sm:text-3xl font-display font-bold text-primary-text">Zidhu</h2>
+            </div>
             <p class="text-lg sm:text-xl md:text-2xl text-secondary-text font-body mb-8">
                 A passionate programmer and hacker crafting elegant code with a timeless soul.
             </p>
-            <a href="#projects" class="inline-block bg-accent-blue text-primary-bg py-3 px-6 text-base sm:text-lg rounded-full shadow-md hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out font-semibold">
-                Explore My Work <i class="fas fa-arrow-right ml-2"></i>
-            </a>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="bg-secondary-bg rounded-xl shadow-subtle-card p-6 md:p-8 mb-16">
+        <section id="about" class="bg-secondary-bg pixel-bg rounded-xl shadow-subtle-card p-6 md:p-8 mb-16">
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">About Me</h3>
             <p class="text-base sm:text-lg text-primary-text leading-relaxed mb-4">
                 I'm a coder with a knack for solving complex problems and a love for minimal, aesthetic designs. My work blends cutting-edge tech with a classic, monochromatic vibe, inspired by late-night coding sessions.
@@ -126,57 +174,47 @@
                 My journey is driven by curiosity and a desire to build secure, efficient, and beautiful digital experiences.
             </p>
         </section>
-<!-- SIDHARTH Acrostic Slide Section -->
-<section id="sidharth" class="mb-16 px-4">
-  <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-6">
-    𝐒𝐈𝐃𝐇𝐀𝐑𝐓𝐇
-  </h3>
-  <div class="overflow-x-auto whitespace-nowrap scrollbar-hide">
-    <ul class="flex gap-4">
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🎓 <strong class="text-accent-blue">𝐒</strong> – Scientist
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🌐 <strong class="text-accent-blue">𝐈</strong> – Internet Expert
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        👨‍💻 <strong class="text-accent-blue">𝐃</strong> – Developer
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🕶️ <strong class="text-accent-blue">𝐇</strong> – Hacker
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🤖 <strong class="text-accent-blue">𝐀</strong> – AI Expert
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🔍 <strong class="text-accent-blue">𝐑</strong> – Reverse Engineer
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        🛠️ <strong class="text-accent-blue">𝐓</strong> – Tech Specialist
-      </li>
-      <li class="inline-block bg-secondary-bg min-w-[200px] p-4 rounded-xl shadow hover:scale-105 transition-all duration-200">
-        💻 <strong class="text-accent-blue">𝐇</strong> – Hardware Enthusiast
-      </li>
-    </ul>
-  </div>
-</section>
 
-        <!-- Identity Section -->
+        <!-- Highlights Slider Section -->
+        <section id="highlights" class="mb-16">
+            <div class="slider">
+                <div class="slides-container">
+                    <div class="slide">
+                        <img src="images/instaxd.png" alt="Insta-XD">
+                        <div class="slide-content">
+                            <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Insta-XD</h4>
+                            <p class="text-sm sm:text-base text-secondary-text">The world's first self server connected mod without port forwarding.</p>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/pussyrat.png" alt="Pussy-RAT">
+                        <div class="slide-content">
+                            <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Pussy-RAT</h4>
+                            <p class="text-sm sm:text-base text-secondary-text">A remote access tool for managing systems securely.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- What I Am Section -->
         <section id="identity" class="mb-16">
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">What I Am</h3>
             <div class="columns-1 sm:columns-2 md:columns-3 gap-6">
                 <div class="break-inside-avoid-column bg-tertiary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-code text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-code text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">CODER</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Crafting clean, efficient code to bring ideas to life.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-tertiary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-mask text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-mask text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">HACKER</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Exploring systems ethically to uncover hidden possibilities.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-tertiary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-laptop-code text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-laptop-code text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">PROGRAMMER</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Building robust solutions with logic and creativity.</p>
                 </div>
@@ -188,94 +226,34 @@
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">My Skills</h3>
             <div class="columns-1 sm:columns-2 md:columns-3 gap-6">
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fab fa-android text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fab fa-android text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Android Mods</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Customizing and enhancing Android OS and applications.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-undo-alt text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-undo-alt text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Reverse Engineering</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Dissecting software to understand its inner workings.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-shield-alt text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-shield-alt text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Cybersecurity</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Protecting systems and data from digital threats.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-globe text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-globe text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Web Development</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Building modern, responsive web applications.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-network-wired text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-network-wired text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Network Security</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Securing network infrastructures and communications.</p>
                 </div>
                 <div class="break-inside-avoid-column bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out mb-6">
-                    <i class="fas fa-cloud text-3xl sm:text-4xl text-accent-blue mb-3"></i>
+                    <i class="fas fa-cloud text-3xl sm:text-4xl text-accent-blue mb-3 icon-visible"></i>
                     <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">Cloud Computing</h4>
                     <p class="text-sm sm:text-base text-secondary-text">Designing and deploying scalable cloud solutions.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- GitHub Section -->
-        <section id="github" class="mb-16">
-            <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">My GitHub Journey</h3>
-            <p class="text-base sm:text-lg text-secondary-text text-center mb-8">
-                As a GitHub enthusiast, I live for open-source contributions, late-night commits, and building projects that matter. Check out my activity below!
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-tertiary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out flex flex-col items-center justify-center">
-                    <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-4">GitHub Stats</h4>
-                    <img src="https://github-readme-stats.vercel.app/api?username=zidhugram&show_icons=true&theme=graywhite&hide_border=true&text_color=2E3440&title_color=4682B4&icon_color=4682B4" alt="GitHub Stats" class="w-full h-auto max-w-full">
-                </div>
-                <div class="bg-tertiary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out flex flex-col items-center justify-center">
-                    <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-4">Top Languages</h4>
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=zidhugram&layout=compact&theme=graywhite&hide_border=true&text_color=2E3440&title_color=4682B4&icon_color=4682B4" alt="Top Languages" class="w-full h-auto max-w-full">
-                </div>
-            </div>
-            <p class="mt-8 text-base sm:text-lg text-secondary-text text-center">
-                Visit my GitHub: <a href="https://github.com/zidhugram" class="text-accent-blue hover:underline font-semibold">@zidhugram</a>
-            </p>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="bg-secondary-bg rounded-xl shadow-subtle-card p-6 md:p-8 mb-16">
-            <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">My Creations</h3>
-
-            <!-- Project Idea Generator -->
-            <div class="flex justify-center mb-8">
-                <button id="generate-project-btn"
-                        class="inline-block bg-accent-blue text-primary-bg py-3 px-6 text-base sm:text-lg rounded-full shadow-md hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out font-semibold">
-                    ✨ Generate Project Idea
-                </button>
-            </div>
-
-            <div id="project-idea-output" class="hidden bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 mt-6 text-center">
-                <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2" id="project-idea-title"></h4>
-                <p class="text-sm sm:text-base text-secondary-text mb-4" id="project-idea-description"></p>
-                <p class="text-xs sm:text-sm text-primary-text font-semibold" id="project-idea-tech"></p>
-                <button id="clear-project-idea-btn" class="mt-4 text-accent-blue hover:underline text-sm">Clear Idea</button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out text-center">
-                    <img src="https://placehold.co/400x250/A9A9A9/FFFFFF?text=CodeVault+UI" alt="CodeVault Project Screenshot" class="w-full h-auto rounded-md mb-4 border border-border-gray/30 max-w-full">
-                    <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">CodeVault</h4>
-                    <p class="text-sm sm:text-base text-secondary-text mb-4">A secure, encrypted note-taking app for coders, built with Python and Flask, focusing on data privacy.</p>
-                    <a href="#" class="inline-block bg-accent-blue text-primary-bg py-2 px-6 rounded-full text-sm shadow-md hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out font-semibold">
-                        View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                    </a>
-                </div>
-                <div class="bg-primary-bg p-6 rounded-lg shadow-subtle-card border border-border-gray/50 hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out text-center">
-                    <img src="https://placehold.co/400x250/A9A9A9/FFFFFF?text=RetroTerm+Mockup" alt="RetroTerm Project Mockup" class="w-full h-auto rounded-md mb-4 border border-border-gray/30 max-w-full">
-                    <h4 class="text-xl sm:text-2xl font-heading-serif font-bold text-primary-text mb-2">RetroTerm</h4>
-                    <p class="text-sm sm:text-base text-secondary-text mb-4">A terminal emulator with a classic aesthetic, coded in C++ and JavaScript, bringing nostalgia to the command line.</p>
-                    <a href="#" class="inline-block bg-accent-blue text-primary-bg py-2 px-6 rounded-full text-sm shadow-md hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out font-semibold">
-                        View Project <i class="fas fa-external-link-alt ml-2 text-sm"></i>
-                    </a>
                 </div>
             </div>
         </section>
@@ -331,97 +309,35 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Gemini API Integration for Project Idea Generator
-        const generateProjectBtn = document.getElementById('generate-project-btn');
-        const projectIdeaOutput = document.getElementById('project-idea-output');
-        const projectIdeaTitle = document.getElementById('project-idea-title');
-        const projectIdeaDescription = document.getElementById('project-idea-description');
-        const projectIdeaTech = document.getElementById('project-idea-tech');
-        const clearProjectIdeaBtn = document.getElementById('clear-project-idea-btn');
+        // Slider functionality
+        const slidesContainer = document.querySelector('.slides-container');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let currentIndex = 0;
 
-        generateProjectBtn.addEventListener('click', async () => {
-            projectIdeaOutput.classList.remove('hidden');
-            projectIdeaTitle.textContent = 'Generating idea...';
-            projectIdeaDescription.textContent = 'Please wait, the AI is crafting something unique.';
-            projectIdeaTech.textContent = '';
-            generateProjectBtn.disabled = true;
+        function showSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
 
-            const skills = [
-                "Android Mods", "Reverse Engineering", "Cybersecurity",
-                "Web Development", "Network Security", "Cloud Computing",
-                "Python", "JavaScript", "C++", "Ethical Hacking"
-            ];
-            const roles = ["Programmer", "Hacker", "Engineer", "Digital Craftsman"];
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
 
-            const prompt = `As a ${roles.join(', ')} with skills in ${skills.join(', ')}, suggest a new, innovative tech project.
-            Provide the output as a JSON object with the following structure:
-            {
-              "projectName": "Project Name Here",
-              "description": "A brief description of the project.",
-              "techStack": "Comma-separated list of suggested technologies/skills"
-            }`;
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
 
-            let chatHistory = [];
-            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
 
-            const payload = {
-                contents: chatHistory,
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            "projectName": { "type": "STRING" },
-                            "description": { "type": "STRING" },
-                            "techStack": { "type": "STRING" }
-                        },
-                        "propertyOrdering": ["projectName", "description", "techStack"]
-                    }
-                }
-            };
+        // Auto-slide every 5 seconds
+        setInterval(nextSlide, 5000);
 
-            const apiKey = ""; // Canvas will automatically provide this at runtime
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    const jsonString = result.candidates[0].content.parts[0].text;
-                    const parsedJson = JSON.parse(jsonString);
-
-                    projectIdeaTitle.textContent = parsedJson.projectName || "No title generated";
-                    projectIdeaDescription.textContent = parsedJson.description || "No description generated.";
-                    projectIdeaTech.textContent = `Suggested Tech: ${parsedJson.techStack || "N/A"}`;
-                } else {
-                    projectIdeaTitle.textContent = 'Error Generating Idea';
-                    projectIdeaDescription.textContent = 'Could not retrieve a valid project idea. Please try again.';
-                    projectIdeaTech.textContent = '';
-                }
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                projectIdeaTitle.textContent = 'Error';
-                projectIdeaDescription.textContent = 'Failed to generate idea. Check console for details.';
-                projectIdeaTech.textContent = '';
-            } finally {
-                generateProjectBtn.disabled = false;
-            }
-        });
-
-        clearProjectIdeaBtn.addEventListener('click', () => {
-            projectIdeaOutput.classList.add('hidden');
-            projectIdeaTitle.textContent = '';
-            projectIdeaDescription.textContent = '';
-            projectIdeaTech.textContent = '';
-        });
+        // Initial display
+        showSlide(currentIndex);
 
         // Telegram Bot Notification
         const contactForm = document.getElementById('contact-form');
@@ -471,7 +387,7 @@
             } finally {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
-                setTimeout(() => formFeedback.classList.add('hidden'), 5000); // Hide feedback after 5 seconds
+                setTimeout(() => formFeedback.classList.add('hidden'), 5000);
             }
         });
 
@@ -496,7 +412,6 @@
             }
         }
 
-        // Send notification when page loads
         window.onload = sendVisitNotification;
     </script>
 </body>
