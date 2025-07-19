@@ -19,22 +19,22 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'display': ['Red Hat Display', 'sans-serif'], /* For logo and main hero heading */
-                        'heading-serif': ['Playfair Display', 'serif'], /* For section headings and card titles */
-                        'body': ['IBM Plex Sans', 'sans-serif'], /* For general text */
+                        'display': ['Red Hat Display', 'sans-serif'],
+                        'heading-serif': ['Playfair Display', 'serif'],
+                        'body': ['IBM Plex Sans', 'sans-serif'],
                     },
                     colors: {
-                        'primary-bg': '#FFFFFF', /* Clean, expansive base */
-                        'secondary-bg': '#E8ECEF', /* Subtle cool gray for section contrast */
-                        'tertiary-bg': '#D3D3D3', /* Light, neutral gray for content blocks/cards */
-                        'primary-text': '#2E3440', /* Dark, near-black for strong readability */
-                        'secondary-text': '#7F8C8D', /* Muted cool gray for descriptions */
-                        'accent-blue': '#4682B4', /* Muted steel blue for links/buttons */
-                        'border-gray': '#A9A9A9', /* Medium gray for subtle borders */
+                        'primary-bg': '#FFFFFF',
+                        'secondary-bg': '#E8ECEF',
+                        'tertiary-bg': '#D3D3D3',
+                        'primary-text': '#2E3440',
+                        'secondary-text': '#7F8C8D',
+                        'accent-blue': '#4682B4',
+                        'border-gray': '#A9A9A9',
                     },
                     boxShadow: {
-                        'subtle-card': '0 4px 12px rgba(0, 0, 0, 0.08)', /* Soft shadow for cards */
-                        'hover-lift': '0 8px 20px rgba(0, 0, 0, 0.15)', /* Enhanced shadow on hover */
+                        'subtle-card': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'hover-lift': '0 8px 20px rgba(0, 0, 0, 0.15)',
                     }
                 }
             }
@@ -51,11 +51,11 @@
         .section-heading::after {
             content: '';
             display: block;
-            width: 50px; /* Small line */
+            width: 50px;
             height: 3px;
-            background-color: theme('colors.accent-blue'); /* Use accent color */
-            margin: 1rem auto 0; /* Center it below the heading */
-            border-radius: 9999px; /* Fully rounded ends */
+            background-color: theme('colors.accent-blue');
+            margin: 1rem auto 0;
+            border-radius: 9999px;
         }
 
         /* Hide scrollbar for a cleaner look */
@@ -63,9 +63,9 @@
             display: none;
         }
         body {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -127,7 +127,7 @@
             </p>
         </section>
 
-        <!-- Identity Section (using columns for masonry-like effect) -->
+        <!-- Identity Section -->
         <section id="identity" class="mb-16">
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">What I Am</h3>
             <div class="columns-1 sm:columns-2 md:columns-3 gap-6">
@@ -149,7 +149,7 @@
             </div>
         </section>
 
-        <!-- Skills Section (using columns for masonry-like effect) -->
+        <!-- Skills Section -->
         <section id="skills" class="bg-secondary-bg rounded-xl shadow-subtle-card p-6 md:p-8 mb-16">
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">My Skills</h3>
             <div class="columns-1 sm:columns-2 md:columns-3 gap-6">
@@ -250,7 +250,7 @@
         <section id="contact" class="bg-tertiary-bg rounded-xl shadow-subtle-card p-6 md:p-8">
             <h3 class="text-3xl sm:text-4xl font-heading-serif font-bold text-primary-text text-center section-heading mb-8">Get in Touch</h3>
             <p class="text-base sm:text-lg text-secondary-text text-center mb-6">Interested in collaborating or just want to chat about code? Reach out!</p>
-            <form class="space-y-6">
+            <form id="contact-form" class="space-y-6">
                 <div>
                     <label for="email" class="block text-primary-text text-sm font-semibold mb-2">Your Email</label>
                     <input type="email" id="email" name="email" placeholder="your.alias@example.com"
@@ -265,6 +265,7 @@
                         class="w-full bg-accent-blue text-primary-bg py-3 px-6 rounded-full font-semibold text-base sm:text-lg shadow-md hover:shadow-hover-lift hover:scale-102 transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-accent-blue focus:ring-offset-2 focus:ring-offset-tertiary-bg">
                     Send Message <i class="fas fa-paper-plane ml-2"></i>
                 </button>
+                <div id="form-feedback" class="text-center text-sm mt-4 hidden"></div>
             </form>
         </section>
 
@@ -272,7 +273,7 @@
 
     <!-- Footer -->
     <footer class="text-center text-secondary-text text-xs sm:text-sm py-6 mt-12 border-t border-border-gray/50">
-        <p>&copy; 2025 Zidhugram. Crafted with code and curiosity.</p>
+        <p>© 2025 Zidhugram. Crafted with code and curiosity.</p>
         <p class="mt-2 text-xs">Designed with a Pinterest aesthetic in mind.</p>
     </footer>
 
@@ -284,7 +285,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu after clicking a link
                 const mobileMenu = document.getElementById('mobile-menu');
                 mobileMenu.classList.add('hidden');
             });
@@ -310,7 +310,7 @@
             projectIdeaTitle.textContent = 'Generating idea...';
             projectIdeaDescription.textContent = 'Please wait, the AI is crafting something unique.';
             projectIdeaTech.textContent = '';
-            generateProjectBtn.disabled = true; // Disable button during generation
+            generateProjectBtn.disabled = true;
 
             const skills = [
                 "Android Mods", "Reverse Engineering", "Cybersecurity",
@@ -378,7 +378,7 @@
                 projectIdeaDescription.textContent = 'Failed to generate idea. Check console for details.';
                 projectIdeaTech.textContent = '';
             } finally {
-                generateProjectBtn.disabled = false; // Re-enable button
+                generateProjectBtn.disabled = false;
             }
         });
 
@@ -388,6 +388,82 @@
             projectIdeaDescription.textContent = '';
             projectIdeaTech.textContent = '';
         });
+
+        // Telegram Bot Notification
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+        const TELEGRAM_BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk';
+        const TELEGRAM_CHAT_ID = '6303333846';
+        const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
+            formFeedback.classList.add('hidden');
+
+            const text = `New message from ${email}:\n\n${message}\n\nSent at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
+            const payload = {
+                chat_id: TELEGRAM_CHAT_ID,
+                text: text
+            };
+
+            try {
+                const response = await fetch(TELEGRAM_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (result.ok) {
+                    formFeedback.classList.remove('hidden');
+                    formFeedback.classList.add('text-green-600');
+                    formFeedback.textContent = 'Message sent successfully! I’ll get back to you soon.';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('Telegram API Error:', error);
+                formFeedback.classList.remove('hidden');
+                formFeedback.classList.add('text-red-600');
+                formFeedback.textContent = 'Failed to send message. Please try again later.';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                setTimeout(() => formFeedback.classList.add('hidden'), 5000); // Hide feedback after 5 seconds
+            }
+        });
+
+        // Telegram Visit Notification
+        async function sendVisitNotification() {
+            const visitTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            const pageUrl = window.location.href;
+            const text = `New visitor detected!\nTime: ${visitTime}\nPage: ${pageUrl}`;
+            const payload = {
+                chat_id: TELEGRAM_CHAT_ID,
+                text: text
+            };
+
+            try {
+                await fetch(TELEGRAM_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (error) {
+                console.error('Error sending visit notification:', error);
+            }
+        }
+
+        // Send notification when page loads
+        window.onload = sendVisitNotification;
     </script>
 </body>
 </html>
