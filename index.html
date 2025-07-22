@@ -24,7 +24,7 @@
 
         /* Custom CSS for 3D effects, fonts, and textures */
         body {
-            background-color: #5C2D91;
+            background-color: #5C2D91; /* Reverted to original purple background */
             font-family: 'Linik Sans', sans-serif; /* Apply custom font */
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
@@ -82,7 +82,14 @@
         /* Pink Block */
         .block-pink {
             background-color: #FF69B4; /* hotpink */
-            color: #ffffff;
+            color: #000000; /* Black for readability */
+            font-weight: 800;
+        }
+        
+        /* Teal Block for About Me */
+        .block-teal {
+            background-color: #0b2d39;
+            color: #ffffff; /* White text for contrast */
             font-weight: 800;
         }
 
@@ -129,7 +136,7 @@
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
+    <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
         <nav class="w-full pl-4 pr-4 py-3 flex justify-between items-center">
             <!-- Main Brand Heading -->
             <a href="#" class="text-2xl font-extrabold font-display flashing-title text-white">zidhugram</a>
@@ -160,26 +167,28 @@
             </div>
         </section>
 
-        <!-- Links Section -->
-        <section id="links" class="max-w-md mx-auto space-y-6 my-12">
-            <a href="https://github.com/zidhu-xd" class="block block-3d block-gold w-full text-lg text-center p-4">
-                <i class="fab fa-github mr-2"></i> GitHub
-            </a>
-            <a href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
-                <i class="fab fa-instagram mr-2"></i> Instagram
-            </a>
-            <a href="#highlights" class="block block-3d block-blue w-full text-lg text-center p-4">
-                <i class="fas fa-star mr-2"></i> View Projects
-            </a>
-        </section>
-
-        <!-- About Section -->
+        <!-- About Section with Integrated Links -->
         <section id="about" class="max-w-3xl mx-auto py-16 text-center">
             <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">About Me</h2>
-            <div class="block-3d block-pink p-8 text-lg leading-relaxed">
-                <p>
-                    Hello! I'm ZidhuXD. I thrive on building elegant, minimal, and secure solutions. My journey is fueled by a relentless curiosity for reverse engineering, cybersecurity, and crafting unique digital experiences.
+            <div class="block-3d block-teal p-8 text-lg leading-relaxed">
+                <p class="mb-4">
+                    I'm a 16-year-old from Kerala, India. I started my tech life in 2019, and since then, I've been exploring the endless possibilities of the internet world. I've studied code, modified it, and now I'm happy to say that this is my first public work.
                 </p>
+                <p class="mb-8">
+                    I hope you find it good—it might look like a simple page, but there are thousands of lines of code running behind it to create what you see right now. As a tech nerd, I'm always active on social media to stay updated.
+                </p>
+                <!-- Links moved here -->
+                <div class="max-w-sm mx-auto space-y-6">
+                    <a href="https://github.com/zidhu-xd" class="block block-3d block-gold w-full text-lg text-center p-4">
+                        <i class="fab fa-github mr-2"></i> GitHub
+                    </a>
+                    <a href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
+                        <i class="fab fa-instagram mr-2"></i> Instagram
+                    </a>
+                    <a href="https://t.me/zidhuxd" class="block block-3d block-blue w-full text-lg text-center p-4">
+                        <i class="fab fa-telegram mr-2"></i> Telegram
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -195,8 +204,8 @@
                                 <div class="mb-4 block-3d block-gold p-2 w-full aspect-video overflow-hidden">
                                     <img src="images/instaxd.png" alt="Insta-XD Project Image" class="w-full h-full object-cover">
                                 </div>
-                                <h3 class="text-3xl font-bold font-display mb-2">Insta-XD</h3>
-                                <p>A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
+                                <h3 class="text-3xl font-bold font-display mb-2 text-white">Insta-XD</h3>
+                                <p class="text-gray-200">A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
                             </div>
                         </div>
                         <!-- Slide 2 -->
@@ -205,8 +214,8 @@
                                 <div class="mb-4 block-3d block-gold p-2 w-full aspect-video overflow-hidden">
                                     <img src="images/pussyrat.png" alt="Pussy-RAT Project Image" class="w-full h-full object-cover">
                                 </div>
-                                <h3 class="text-3xl font-bold font-display mb-2">Pussy-RAT</h3>
-                                <p>An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
+                                <h3 class="text-3xl font-bold font-display mb-2 text-white">Pussy-RAT</h3>
+                                <p class="text-gray-200">An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
                             </div>
                         </div>
                     </div>
@@ -246,16 +255,16 @@
                 <form id="contact-form" class="space-y-6">
                     <div id="form-feedback" class="hidden p-4 rounded-lg text-center font-semibold"></div>
                     <div>
-                        <label for="name" class="block mb-2 text-lg font-medium text-purple-900">Name</label>
-                        <input type="text" id="name" name="name" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
+                        <label for="name" class="block mb-2 text-lg font-medium text-gray-800">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 bg-gray-200 text-gray-800 rounded-lg border-2 border-gray-400 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
-                        <label for="instagram" class="block mb-2 text-lg font-medium text-purple-900">Instagram Username</label>
-                        <input type="text" id="instagram" name="instagram" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
+                        <label for="instagram" class="block mb-2 text-lg font-medium text-gray-800">Instagram Username</label>
+                        <input type="text" id="instagram" name="instagram" class="w-full p-3 bg-gray-200 text-gray-800 rounded-lg border-2 border-gray-400 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
-                        <label for="message" class="block mb-2 text-lg font-medium text-purple-900">Message</label>
-                        <textarea id="message" name="message" rows="5" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required></textarea>
+                        <label for="message" class="block mb-2 text-lg font-medium text-gray-800">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full p-3 bg-gray-200 text-gray-800 rounded-lg border-2 border-gray-400 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required></textarea>
                     </div>
                     <button type="submit" class="block-3d block-blue w-full text-lg p-4 font-bold">
                         Send Message <i class="fas fa-paper-plane ml-2"></i>
@@ -268,8 +277,8 @@
 
     <!-- Footer -->
     <footer class="text-center py-8 border-t-2 border-black">
-        <p class="text-purple-300">&copy; 2025 Zidhugram. All Rights Reserved.</p>
-        <p class="text-sm text-purple-400 mt-1">Self coded with love.</p>
+        <p class="text-gray-300">&copy; 2025 Zidhugram. All Rights Reserved.</p>
+        <p class="text-sm text-gray-400 mt-1">Self coded with love.</p>
     </footer>
 
 
