@@ -34,11 +34,11 @@
         
         /* Flashing animation for the header title */
         .flashing-title {
-            animation: flash 3s infinite;
+            animation: flash 4s infinite;
         }
 
         @keyframes flash {
-            0%, 100% { opacity: 1; text-shadow: 0 0 8px #32CD32; }
+            0%, 100% { opacity: 1; text-shadow: 0 0 8px #000000; }
             50% { opacity: 0.5; text-shadow: none; }
         }
 
@@ -82,7 +82,7 @@
         
         /* Lime/Green Accent for Headers */
         .header-lime {
-            color: #32CD32;
+            color: #c0ff00;
         }
 
         /* Glassmorphism Card Style - kept for subtle background elements */
@@ -142,12 +142,19 @@
     <main class="container mx-auto px-6 py-12">
 
         <!-- Hero Section -->
-        <section id="hero" class="text-center py-16">
-            <img src="images/zidhu-logo.png" 
-                 alt="Zidhu's Profile Picture" 
-                 class="w-36 h-36 mx-auto rounded-full border-4 shadow-lg mb-6 block-3d" style="border-color: #000;">
-            <h1 class="text-4xl md:text-5xl font-black font-display uppercase tracking-wider text-white">Zidhu</h1>
-            <p class="text-lg md:text-xl mt-2 header-lime font-semibold">Developer • Hacker • Programmer • Engineer</p>
+        <section id="hero" class="py-16">
+            <div class="max-w-2xl mx-auto flex flex-col md:flex-row items-center justify-center md:justify-start">
+                <!-- Profile Image -->
+                <img src="images/zidhu-logo.png" 
+                     alt="Zidhu's Profile Picture" 
+                     class="w-36 h-36 rounded-full border-4 shadow-lg block-3d flex-shrink-0" style="border-color: #000;">
+                
+                <!-- Profile Text -->
+                <div class="text-center md:text-left md:ml-8 mt-6 md:mt-0">
+                    <h1 class="text-4xl md:text-5xl font-black font-display uppercase tracking-wider text-white">Zidhu</h1>
+                    <p class="text-lg md:text-xl mt-2 header-lime font-semibold">Developer • Hacker • Programmer • Engineer</p>
+                </div>
+            </div>
         </section>
 
         <!-- Links Section -->
@@ -329,13 +336,13 @@
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk';
-            const CHAT_ID = '6303333846';
+            const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your actual token
+            const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'; // Replace with your actual chat ID
 
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonContent = submitButton.innerHTML;
 
-            if (BOT_TOKEN === '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk' || CHAT_ID === '6303333846') {
+            if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
                  showFeedback('Please configure the Telegram Bot Token and Chat ID in the script.', 'error');
                  return;
             }
