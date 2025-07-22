@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidhugram</title>
+    <title>Zidhugram | Developer • Hacker • Programmer</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,7 +17,7 @@
         @font-face {
             font-family: 'Linik Sans';
             src: url('fonts/linik-sans.black.ttf') format('truetype');
-            font-weight: 800;
+            font-weight: 800; /* Bolder font weight */
             font-style: normal;
         }
 
@@ -26,6 +26,8 @@
             background-color: #5C2D91;
             font-family: 'Linik Sans', sans-serif; /* Apply custom font */
             color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         h1, h2, h3, h4, .font-display {
@@ -38,46 +40,55 @@
         }
 
         @keyframes flash {
-            0%, 100% { opacity: 1; text-shadow: 0 0 8px #000000; }
-            50% { opacity: 0.5; text-shadow: none; }
+            0%, 100% { 
+                opacity: 1; 
+                text-shadow: 0 0 10px #000000, 0 0 5px #c0ff00;
+            }
+            50% { 
+                opacity: 0.6; 
+                text-shadow: none; 
+            }
         }
 
-        /* --- New 3D Block Styling (Merged with Black Shadow) --- */
+        /* --- Polished 3D Block Styling --- */
         .block-3d {
             position: relative;
             border-width: 2px;
-            border-color: #000000; /* Black border for all blocks */
-            box-shadow: 4px 4px 0px #000000; /* Black shadow for all blocks */
+            border-color: #000000;
+            box-shadow: 4px 4px 0px #000000;
             transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-            border-radius: 0.5rem; /* 8px */
+            border-radius: 0.75rem; /* 12px for a softer look */
         }
 
         .block-3d:hover {
-            transform: translateY(-4px) translateX(-2px);
-            box-shadow: 6px 6px 0px #000000; /* Increased black shadow on hover */
+            transform: translateY(-5px) translateX(-2px);
+            box-shadow: 7px 7px 0px #000000;
         }
         
         .block-3d:active {
             transform: translateY(2px) translateX(1px);
-            box-shadow: 2px 2px 0px #000000; /* Reduced black shadow on active */
+            box-shadow: 2px 2px 0px #000000;
         }
 
         /* Gold Block */
         .block-gold {
             background-color: #FFD700; /* gold */
-            color: #4A274F;
+            color: #3D1E53;
+            font-weight: 800;
         }
 
         /* Pink Block */
         .block-pink {
             background-color: #FF69B4; /* hotpink */
             color: #ffffff;
+            font-weight: 800;
         }
 
         /* Blue Block */
         .block-blue {
             background-color: #1E90FF; /* dodgerblue */
             color: #ffffff;
+            font-weight: 800;
         }
         
         /* Lime/Green Accent for Headers */
@@ -85,11 +96,11 @@
             color: #c0ff00;
         }
 
-        /* Glassmorphism Card Style - kept for subtle background elements */
+        /* Glassmorphism Card Style */
         .card-glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -97,7 +108,7 @@
         /* Slider Styles */
         .slider-container {
             overflow: hidden;
-            border-radius: 0.5rem;
+            border-radius: 1rem;
         }
         .slider-track {
             display: flex;
@@ -112,9 +123,9 @@
 <body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50">
+    <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold font-display flashing-title text-white-400">zidhugram</a>
+            <a href="#" class="text-3xl font-extrabold font-display flashing-title text-white">zidhugram</a>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-4">
@@ -132,10 +143,10 @@
         </nav>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-purple-900/90 backdrop-blur-lg">
-            <a href="#about" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">About</a>
-            <a href="#projects" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">Projects</a>
-            <a href="#contact" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-purple-900/95 backdrop-blur-lg">
+            <a href="#about" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">About</a>
+            <a href="#projects" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">Projects</a>
+            <a href="#contact" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">Contact</a>
         </div>
     </header>
 
@@ -143,15 +154,15 @@
 
         <!-- Hero Section -->
         <section id="hero" class="py-16">
-            <div class="max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-start">
+            <div class="max-w-xl mx-auto flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-8">
                 <!-- Profile Image -->
                 <img src="images/zidhu-logo.png" 
                      alt="Zidhu's Profile Picture" 
                      class="w-36 h-36 rounded-full border-4 shadow-lg block-3d flex-shrink-0" style="border-color: #000;">
                 
                 <!-- Profile Text -->
-                <div class="text-center sm:text-left sm:ml-8 mt-6 sm:mt-0">
-                    <h1 class="text-4xl md:text-3xl font-black font-display uppercase tracking-wider text-white">Zidhu XD</h1>
+                <div class="text-center sm:text-left">
+                    <h1 class="text-4xl md:text-5xl font-black font-display uppercase tracking-wider text-white">Zidhu XD</h1>
                     <p class="text-lg md:text-xl mt-2 header-lime font-semibold">Developer • Hacker • Programmer • Engineer</p>
                 </div>
             </div>
@@ -159,20 +170,20 @@
 
         <!-- Links Section -->
         <section id="links" class="max-w-md mx-auto space-y-6 my-12">
-            <a href="#" class="block block-3d block-gold w-full text-lg text-center font-bold p-4">
+            <a href="#" class="block block-3d block-gold w-full text-lg text-center p-4">
                 <i class="fab fa-github mr-2"></i> GitHub
             </a>
-            <a href="#" class="block block-3d block-pink w-full text-lg text-center font-bold p-4">
+            <a href="#" class="block block-3d block-pink w-full text-lg text-center p-4">
                 <i class="fab fa-instagram mr-2"></i> Instagram
             </a>
-            <a href="#projects" class="block block-3d block-blue w-full text-lg text-center font-bold p-4">
+            <a href="#projects" class="block block-3d block-blue w-full text-lg text-center p-4">
                 <i class="fas fa-folder-open mr-2"></i> View My Projects
             </a>
         </section>
 
         <!-- About Section -->
         <section id="about" class="max-w-3xl mx-auto py-16">
-            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">About Me</h2>
+            <h2 class="text-4xl font-extrabold font-display text-center mb-8 header-lime">About Me</h2>
             <div class="card-glass p-8 text-center text-lg leading-relaxed">
                 <p>
                     Hello! I'm Zidhu, a passionate creator at the intersection of code and creativity. I thrive on building elegant, minimal, and secure solutions. My journey is fueled by a relentless curiosity for reverse engineering, cybersecurity, and crafting unique digital experiences.
@@ -182,65 +193,65 @@
 
         <!-- Highlights Slider Section -->
         <section id="highlights" class="py-16">
-            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">Highlights</h2>
+            <h2 class="text-4xl font-extrabold font-display text-center mb-8 header-lime">Highlights</h2>
             <div class="max-w-2xl mx-auto relative">
                 <div class="slider-container card-glass">
                     <div id="slider-track" class="slider-track">
                         <!-- Slide 1 -->
                         <div class="slider-item p-8">
                             <div class="h-full flex flex-col justify-center items-center text-center">
-                                <h3 class="text-2xl font-bold font-display mb-2">Insta-XD</h3>
+                                <h3 class="text-3xl font-bold font-display mb-2">Insta-XD</h3>
                                 <p class="text-purple-200">A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
                             </div>
                         </div>
                         <!-- Slide 2 -->
                         <div class="slider-item p-8">
                             <div class="h-full flex flex-col justify-center items-center text-center">
-                                <h3 class="text-2xl font-bold font-display mb-2">Pussy-RAT</h3>
+                                <h3 class="text-3xl font-bold font-display mb-2">Pussy-RAT</h3>
                                 <p class="text-purple-200">An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                  <!-- Slider Controls -->
-                <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 text-3xl text-white/50 hover:text-white transition"><i class="fas fa-chevron-left"></i></button>
-                <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 text-3xl text-white/50 hover:text-white transition"><i class="fas fa-chevron-right"></i></button>
+                <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
         <!-- What I Am Section -->
         <section id="what-i-am" class="max-w-4xl mx-auto py-16">
-            <h2 class="text-3xl font-bold font-display text-center mb-12 header-lime">What I Am</h2>
+            <h2 class="text-4xl font-extrabold font-display text-center mb-12 header-lime">What I Am</h2>
             <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="block-3d block-gold p-6">
-                    <i class="fas fa-code text-4xl mb-4"></i>
-                    <h3 class="text-2xl font-bold font-display mb-2">Coder</h3>
-                    <p>I write clean, efficient, and maintainable code to bring ideas to life.</p>
+                <div class="block-3d block-gold p-8">
+                    <i class="fas fa-code text-5xl mb-4"></i>
+                    <h3 class="text-3xl font-bold font-display mb-2">Coder</h3>
+                    <p class="text-lg">I write clean, efficient, and maintainable code to bring ideas to life.</p>
                 </div>
-                <div class="block-3d block-pink p-6">
-                    <i class="fas fa-user-secret text-4xl mb-4"></i>
-                    <h3 class="text-2xl font-bold font-display mb-2">Hacker</h3>
-                    <p>I ethically explore systems to find weaknesses and improve security.</p>
+                <div class="block-3d block-pink p-8">
+                    <i class="fas fa-user-secret text-5xl mb-4"></i>
+                    <h3 class="text-3xl font-bold font-display mb-2">Hacker</h3>
+                    <p class="text-lg">I ethically explore systems to find weaknesses and improve security.</p>
                 </div>
-                <div class="block-3d block-blue p-6">
-                    <i class="fas fa-laptop-code text-4xl mb-4"></i>
-                    <h3 class="text-2xl font-bold font-display mb-2">Programmer</h3>
-                    <p>I solve complex problems with logic and well-structured algorithms.</p>
+                <div class="block-3d block-blue p-8">
+                    <i class="fas fa-laptop-code text-5xl mb-4"></i>
+                    <h3 class="text-3xl font-bold font-display mb-2">Programmer</h3>
+                    <p class="text-lg">I solve complex problems with logic and well-structured algorithms.</p>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="py-16">
-            <h2 class="text-3xl font-bold font-display text-center mb-12 header-lime">Featured Projects</h2>
+            <h2 class="text-4xl font-extrabold font-display text-center mb-12 header-lime">Featured Projects</h2>
             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
                 <div class="block-3d block-pink p-8">
-                    <h3 class="text-2xl font-bold font-display mb-3">CodeVault</h3>
+                    <h3 class="text-3xl font-bold font-display mb-3">CodeVault</h3>
                     <p class="text-purple-100 mb-4">A cross-platform, end-to-end encrypted note-taking application. Your thoughts are secured with military-grade encryption, accessible only by you.</p>
                     <a href="#" class="font-bold text-white hover:underline transition">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
                 <div class="block-3d block-blue p-8">
-                    <h3 class="text-2xl font-bold font-display mb-3">RetroTerm</h3>
+                    <h3 class="text-3xl font-bold font-display mb-3">RetroTerm</h3>
                     <p class="text-purple-100 mb-4">A nostalgic terminal emulator with a CRT screen effect and customizable themes. A throwback for the modern command-line enthusiast.</p>
                     <a href="#" class="font-bold text-white hover:underline transition">Try it Live <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
@@ -249,21 +260,21 @@
 
         <!-- Contact Section -->
         <section id="contact" class="max-w-2xl mx-auto py-16">
-            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">Get In Touch</h2>
+            <h2 class="text-4xl font-extrabold font-display text-center mb-8 header-lime">Get In Touch</h2>
             <div class="block-3d block-gold p-8">
                 <form id="contact-form" class="space-y-6">
-                    <div id="form-feedback" class="hidden p-4 rounded-md text-center font-semibold"></div>
+                    <div id="form-feedback" class="hidden p-4 rounded-lg text-center font-semibold"></div>
                     <div>
-                        <label for="name" class="block mb-2 text-sm font-medium text-purple-900">Name</label>
-                        <input type="text" id="name" name="name" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required>
+                        <label for="name" class="block mb-2 text-lg font-medium text-purple-900">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-purple-900">Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required>
+                        <label for="email" class="block mb-2 text-lg font-medium text-purple-900">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
-                        <label for="message" class="block mb-2 text-sm font-medium text-purple-900">Message</label>
-                        <textarea id="message" name="message" rows="5" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required></textarea>
+                        <label for="message" class="block mb-2 text-lg font-medium text-purple-900">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required></textarea>
                     </div>
                     <button type="submit" class="block-3d block-blue w-full text-lg p-4 font-bold">
                         Send Message <i class="fas fa-paper-plane ml-2"></i>
@@ -275,7 +286,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-8 border-t border-white/10">
+    <footer class="text-center py-8 border-t-2 border-black">
         <p class="text-purple-300">&copy; 2025 Zidhugram. All Rights Reserved.</p>
         <p class="text-sm text-purple-400 mt-1">Self coded with love.</p>
     </footer>
@@ -343,7 +354,7 @@
             const originalButtonContent = submitButton.innerHTML;
 
             if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
-                 showFeedback('Please configure the Telegram Bot Token and Chat ID in the script.', 'error');
+                 showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
                  return;
             }
 
@@ -391,16 +402,18 @@ ${message}
         
         function showFeedback(message, type) {
             formFeedback.textContent = message;
-            formFeedback.className = 'p-4 rounded-md text-center font-semibold'; // Reset classes
+            formFeedback.className = 'p-4 rounded-lg text-center font-semibold'; // Reset classes
             
             if (type === 'success') {
-                formFeedback.classList.add('bg-green-500/80', 'text-white');
+                formFeedback.classList.add('bg-green-500/90', 'text-white');
             } else if (type === 'error') {
-                formFeedback.classList.add('bg-red-500/80', 'text-white');
+                formFeedback.classList.add('bg-red-500/90', 'text-white');
             }
             
             formFeedback.classList.remove('hidden');
-            setTimeout(() => formFeedback.classList.add('hidden'), 5000);
+            setTimeout(() => {
+                formFeedback.classList.add('hidden');
+            }, 5000);
         }
 
     </script>
