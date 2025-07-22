@@ -1,646 +1,399 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zidhugram - Digital Craftsman</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Zidhugram | Developer • Hacker • Programmer</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Red Hat Display for logo/main headings, IBM Plex Sans for body -->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6.6.0 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Styles and Tailwind Config -->
     <style>
-        /* Custom Tailwind Configuration */
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'display': ['Red Hat Display', 'sans-serif'], /* Bold, rounded font for headings */
-                        'body': ['IBM Plex Sans', 'sans-serif'], /* Clean font for body text */
-                    },
-                    colors: {
-                        'primary-bg': '#000000', /* Pure Black */
-                        'secondary-bg': '#1A1A1A', /* Slightly off-black for sections/cards */
-                        'primary-text': '#FFFFFF', /* Pure White */
-                        'secondary-text': '#B0B0B0', /* Light gray for descriptions */
-                        'accent-green': '#00CC00', /* Vibrant Green, inspired by Linktree */
-                        'border-dark': '#333333', /* Dark gray for subtle borders */
-                        'gradient-start': '#1A1A1A', /* Dark gradient start */
-                        'gradient-end': '#0A0A0A', /* Deeper dark gradient end */
-                    },
-                    borderRadius: {
-                        'panel': '1.75rem', /* Increased rounded edges for a smoother look */
-                        'button': '1.5rem', /* Rounded edges for buttons */
-                    },
-                    boxShadow: {
-                        'panel-dark': '0 10px 25px rgba(0, 0, 0, 0.7)', /* Deeper, smoother shadow */
-                        'panel-hover': '0 15px 30px rgba(0, 204, 0, 0.5)', /* Enhanced green glow on hover */
-                        'contact-glow': '0 0 20px rgba(0, 204, 0, 0.3)', /* Subtle glow for contact section */
-                    },
-                    fontWeight: {
-                        'bold-black': 900, /* Extra bold for headings */
-                    },
-                }
-            }
-        }
-
-        /* Hide Scrollbar */
-        body::-webkit-scrollbar {
-            display: none;
-        }
+        /* Custom CSS for 3D effects, fonts, and textures */
         body {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-            scroll-behavior: smooth;
+            background-color: #5C2D91;
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #ffffff;
         }
 
-        /* Custom style for the accent divider below headings */
-        .section-heading::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: theme('colors.accent-green');
-            margin: 1.25rem auto 0;
-            border-radius: 9999px;
+        h1, h2, h3, h4, .font-display {
+            font-family: 'Red Hat Display', sans-serif;
+        }
+        
+        /* Flashing animation for the header title */
+        .flashing-title {
+            animation: flash 3s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; text-shadow: 0 0 8px #32CD32; }
+            50% { opacity: 0.5; text-shadow: none; }
+        }
+
+        /* --- New 3D Block Styling (Merged with Black Shadow) --- */
+        .block-3d {
+            position: relative;
+            border-width: 2px;
+            border-color: #000000; /* Black border for all blocks */
+            box-shadow: 4px 4px 0px #000000; /* Black shadow for all blocks */
+            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+            border-radius: 0.5rem; /* 8px */
+        }
+
+        .block-3d:hover {
+            transform: translateY(-4px) translateX(-2px);
+            box-shadow: 6px 6px 0px #000000; /* Increased black shadow on hover */
+        }
+        
+        .block-3d:active {
+            transform: translateY(2px) translateX(1px);
+            box-shadow: 2px 2px 0px #000000; /* Reduced black shadow on active */
+        }
+
+        /* Gold Block */
+        .block-gold {
+            background-color: #FFD700; /* gold */
+            color: #4A274F;
+        }
+
+        /* Pink Block */
+        .block-pink {
+            background-color: #FF69B4; /* hotpink */
+            color: #ffffff;
+        }
+
+        /* Blue Block */
+        .block-blue {
+            background-color: #1E90FF; /* dodgerblue */
+            color: #ffffff;
+        }
+        
+        /* Lime/Green Accent for Headers */
+        .header-lime {
+            color: #32CD32;
+        }
+
+        /* Glassmorphism Card Style - kept for subtle background elements */
+        .card-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Slider Styles */
-        .slider {
-            position: relative;
+        .slider-container {
             overflow: hidden;
-            border-radius: theme('borderRadius.panel');
-            box-shadow: theme('boxShadow.panel-dark');
-            margin-bottom: 2.5rem;
+            border-radius: 0.5rem;
         }
-        .slides-container {
+        .slider-track {
             display: flex;
-            transition: transform 0.6s ease-in-out;
+            transition: transform 0.5s ease-in-out;
         }
-        .slide {
+        .slider-item {
             min-width: 100%;
             box-sizing: border-box;
-            background-color: theme('colors.secondary-bg');
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .slide img {
-            width: 100%;
-            height: auto;
-            max-height: 275px;
-            object-fit: contain;
-            border-radius: 1rem;
-            margin-bottom: 1.25rem;
-            border: 2px solid theme('colors.border-dark');
-        }
-        .slide-content {
-            text-align: center;
-        }
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            border: none;
-            font-size: 2rem;
-            color: theme('colors.primary-text');
-            cursor: pointer;
-            padding: 0.75rem 1rem;
-            border-radius: 50%;
-            transition: background 0.4s ease, color 0.4s ease;
-            z-index: 10;
-        }
-        .prev:hover, .next:hover {
-            background: theme('colors.accent-green');
-            color: theme('colors.primary-bg');
-        }
-        .prev {
-            left: 1rem;
-        }
-        .next {
-            right: 1rem;
-        }
-
-        /* Linktree-style Button */
-        .linktree-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 1.25rem 2rem;
-            background-color: theme('colors.secondary-bg');
-            color: theme('colors.primary-text');
-            border-radius: theme('borderRadius.button');
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.25rem;
-            box-shadow: theme('boxShadow.panel-dark');
-            transition: all 0.4s ease-in-out;
-            border: 2px solid theme('colors.border-dark');
-        }
-        .linktree-btn:hover {
-            background-color: theme('colors.accent-green');
-            color: theme('colors.primary-bg');
-            box-shadow: theme('boxShadow.panel-hover');
-            transform: translateY(-3px);
-        }
-        .linktree-btn i {
-            margin-right: 1rem;
-        }
-
-        /* General Panel Styling */
-        .panel {
-            background-color: theme('colors.secondary-bg');
-            border-radius: theme('borderRadius.panel');
-            box-shadow: theme('boxShadow.panel-dark');
-            padding: 1.75rem;
-            margin-bottom: 2.5rem;
-            border: 2px solid theme('colors.border-dark');
-        }
-        .panel:hover {
-            box-shadow: theme('boxShadow.panel-hover');
-            transform: translateY(-3px);
-            transition: all 0.4s ease-in-out;
-        }
-
-        /* Responsive adjustments for GitHub images */
-        .github-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 1rem;
-            border: 2px solid theme('colors.border-dark');
-        }
-
-        /* Contact Section Styling */
-        #contact {
-            background: linear-gradient(135deg, theme('colors.gradient-start'), theme('colors.gradient-end'));
-            padding: 2.5rem;
-            border-radius: theme('borderRadius.panel');
-            box-shadow: theme('boxShadow.contact-glow');
-            animation: pulse 5s infinite;
-        }
-        @keyframes pulse {
-            0% { box-shadow: theme('boxShadow.contact-glow'); }
-            50% { box-shadow: 0 0 30px rgba(0, 204, 0, 0.5); }
-            100% { box-shadow: theme('boxShadow.contact-glow'); }
-        }
-        #contact h3 {
-            text-shadow: 0 0 10px rgba(0, 204, 0, 0.7);
-        }
-        #contact input, #contact textarea {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: theme('colors.border-dark');
-            transition: all 0.3s ease;
-        }
-        #contact input:focus, #contact textarea:focus {
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 10px rgba(0, 204, 0, 0.3);
-        }
-        #contact .linktree-btn {
-            background: theme('colors.accent-green');
-            color: theme('colors.primary-bg');
-            font-weight: 700;
-            padding: 1.5rem 2.5rem;
-        }
-        #contact .linktree-btn:hover {
-            background: theme('colors.primary-bg');
-            color: theme('colors.accent-green');
-            transform: translateY(-4px);
-        }
-        #form-feedback {
-            font-size: 1rem;
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 640px) {
-            .hero-content {
-                flex-direction: column;
-            }
-            .hero-content img {
-                margin-right: 0;
-                margin-bottom: 1.5rem;
-            }
-            .linktree-btn {
-                font-size: 1.1rem;
-                padding: 1rem 1.5rem;
-            }
-            .panel {
-                padding: 1.25rem;
-            }
-            .section-heading {
-                font-size: 2.25rem;
-            }
-            .section-heading::after {
-                margin: 1rem auto 0;
-            }
-            .slide {
-                padding: 1.25rem;
-            }
-            .slide img {
-                max-height: 225px;
-            }
-            #contact {
-                padding: 1.5rem;
-            }
-            #contact .linktree-btn {
-                padding: 1.25rem 2rem;
-                font-size: 1.15rem;
-            }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-primary-bg font-body text-primary-text">
+<body class="antialiased">
 
     <!-- Header -->
-    <header class="bg-primary-bg text-primary-text py-5 px-5 sm:px-8 flex justify-between items-center shadow-lg border-b-2 border-border-dark">
-        <div>
-            <h1 class="text-3xl sm:text-4xl font-display font-black tracking-wide text-accent-green">Zidhugram</h1>
-        </div>
-        <div class="flex items-center space-x-6">
-            <button id="menu-toggle" class="sm:hidden focus:outline-none text-primary-text">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <nav id="nav-menu" class="hidden sm:flex sm:space-x-8">
-                <a href="#about" class="text-xl font-body hover:text-accent-green transition-colors duration-300">About</a>
-                <a href="#projects" class="text-xl font-body hover:text-accent-green transition-colors duration-300">Projects</a>
-                <a href="#contact" class="text-xl font-body hover:text-accent-green transition-colors duration-300">Contact</a>
-            </nav>
+    <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold font-display flashing-title text-green-400">Zidhugram</a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-4">
+                <a href="#about" class="block-3d block-gold text-sm font-semibold px-6 py-2">About</a>
+                <a href="#projects" class="block-3d block-pink text-sm font-semibold px-6 py-2">Projects</a>
+                <a href="#contact" class="block-3d block-blue text-sm font-semibold px-6 py-2">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-purple-900/90 backdrop-blur-lg">
+            <a href="#about" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">About</a>
+            <a href="#projects" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">Projects</a>
+            <a href="#contact" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50">Contact</a>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden sm:hidden bg-primary-bg text-primary-text py-5 px-5 shadow-md">
-        <nav class="flex flex-col space-y-5 text-center">
-            <a href="#about" class="text-xl font-body hover:text-accent-green transition-colors duration-300 py-3">About</a>
-            <a href="#projects" class="text-xl font-body hover:text-accent-green transition-colors duration-300 py-3">Projects</a>
-            <a href="#contact" class="text-xl font-body hover:text-accent-green transition-colors duration-300 py-3">Contact</a>
-        </nav>
-    </div>
+    <main class="container mx-auto px-6 py-12">
 
-    <main class="flex-1 w-full max-w-2xl mx-auto px-5 py-10 md:py-16">
-
-        <!-- Hero Section (Profile & Bio) -->
-        <section id="home" class="text-center mb-12">
-            <img src="images/zidhu-logo.png" alt="Zidhu Logo" class="w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 border-accent-green shadow-lg mr-6 transform hover:scale-105 transition-transform duration-300 ease-in-out">
-            <h2 class="text-3xl sm:text-4xl font-display font-black text-primary-text">Zidhu</h2>
-            <p class="text-xl sm:text-2xl text-secondary-text font-body mb-10">
-                Developer • Hacker • Programmer • Engineer
-            </p>
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-16">
+            <img src="https://placehold.co/150x150/8A2BE2/FFFFFF?text=Z" 
+                 alt="Zidhu's Profile Picture" 
+                 class="w-36 h-36 mx-auto rounded-full border-4 shadow-lg mb-6 block-3d" style="border-color: #000;">
+            <h1 class="text-4xl md:text-5xl font-black font-display uppercase tracking-wider text-white">Zidhu</h1>
+            <p class="text-lg md:text-xl mt-2 header-lime font-semibold">Developer • Hacker • Programmer • Engineer</p>
         </section>
 
-        <!-- Linktree-style Buttons Section -->
-        <section id="links" class="mb-12 space-y-5">
-            <a href="https://github.com/zidhu-xd" target="_blank" class="linktree-btn">
-                <i class="fab fa-github text-3xl"></i> GitHub
+        <!-- Links Section -->
+        <section id="links" class="max-w-md mx-auto space-y-6 my-12">
+            <a href="#" class="block block-3d block-gold w-full text-lg text-center font-bold p-4">
+                <i class="fab fa-github mr-2"></i> GitHub
             </a>
-            <a href="https://instagram.com/zidhuxd" target="_blank" class="linktree-btn">
-                <i class="fab fa-instagram text-3xl"></i> Instagram
+            <a href="#" class="block block-3d block-pink w-full text-lg text-center font-bold p-4">
+                <i class="fab fa-instagram mr-2"></i> Instagram
             </a>
-            <a href="#projects" class="linktree-btn">
-                <i class="fas fa-project-diagram text-3xl"></i> My Projects
+            <a href="#projects" class="block block-3d block-blue w-full text-lg text-center font-bold p-4">
+                <i class="fas fa-folder-open mr-2"></i> View My Projects
             </a>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">About Me</h3>
-            <p class="text-lg sm:text-xl text-secondary-text font-body leading-relaxed mb-6">
-                I'm a coder with a passion for tackling complex challenges and crafting minimal, aesthetic designs. My work fuses cutting-edge technology with a sleek, monochromatic aesthetic, born from late-night coding marathons.
-            </p>
-            <p class="text-lg sm:text-xl text-secondary-text font-body leading-relaxed">
-                My journey is fueled by curiosity and a commitment to creating secure, efficient, and visually stunning digital experiences.
-            </p>
+        <section id="about" class="max-w-3xl mx-auto py-16">
+            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">About Me</h2>
+            <div class="card-glass p-8 text-center text-lg leading-relaxed">
+                <p>
+                    Hello! I'm Zidhu, a passionate creator at the intersection of code and creativity. I thrive on building elegant, minimal, and secure solutions. My journey is fueled by a relentless curiosity for reverse engineering, cybersecurity, and crafting unique digital experiences.
+                </p>
+            </div>
         </section>
 
         <!-- Highlights Slider Section -->
-        <section id="highlights" class="panel slider relative mb-12">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text text-center section-heading mb-10">Highlights</h3>
-            <div class="slides-container">
-                <div class="slide">
-                    <img src="images/instaxd.png" alt="Insta-XD">
-                    <div class="slide-content">
-                        <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Insta-XD</h4>
-                        <p class="text-base sm:text-lg text-secondary-text">The world's first self-server connected mod without port forwarding.</p>
+        <section id="highlights" class="py-16">
+            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">Highlights</h2>
+            <div class="max-w-2xl mx-auto relative">
+                <div class="slider-container card-glass">
+                    <div id="slider-track" class="slider-track">
+                        <!-- Slide 1 -->
+                        <div class="slider-item p-8">
+                            <div class="h-full flex flex-col justify-center items-center text-center">
+                                <h3 class="text-2xl font-bold font-display mb-2">Insta-XD</h3>
+                                <p class="text-purple-200">A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="slider-item p-8">
+                            <div class="h-full flex flex-col justify-center items-center text-center">
+                                <h3 class="text-2xl font-bold font-display mb-2">Pussy-RAT</h3>
+                                <p class="text-purple-200">An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="slide">
-                    <img src="images/pussyrat.png" alt="Pussy-RAT">
-                    <div class="slide-content">
-                        <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Pussy-RAT</h4>
-                        <p class="text-base sm:text-lg text-secondary-text">A remote access tool for managing systems securely.</p>
-                    </div>
-                </div>
+                 <!-- Slider Controls -->
+                <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 text-3xl text-white/50 hover:text-white transition"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 text-3xl text-white/50 hover:text-white transition"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <button class="prev"><i class="fas fa-chevron-left"></i></button>
-            <button class="next"><i class="fas fa-chevron-right"></i></button>
         </section>
 
         <!-- What I Am Section -->
-        <section id="identity" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">What I Am</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-code text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">CODER</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Crafting clean, efficient code to bring ideas to life.</p>
+        <section id="what-i-am" class="max-w-4xl mx-auto py-16">
+            <h2 class="text-3xl font-bold font-display text-center mb-12 header-lime">What I Am</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="block-3d block-gold p-6">
+                    <i class="fas fa-code text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold font-display mb-2">Coder</h3>
+                    <p>I write clean, efficient, and maintainable code to bring ideas to life.</p>
                 </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-mask text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">HACKER</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Exploring systems ethically to uncover hidden possibilities.</p>
+                <div class="block-3d block-pink p-6">
+                    <i class="fas fa-user-secret text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold font-display mb-2">Hacker</h3>
+                    <p>I ethically explore systems to find weaknesses and improve security.</p>
                 </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-laptop-code text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">PROGRAMMER</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Building robust solutions with logic and creativity.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">My Skills</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fab fa-android text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Android Mods</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Customizing and enhancing Android OS and applications.</p>
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-undo-alt text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Reverse Engineering</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Dissecting software to understand its inner workings.</p>
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-shield-alt text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Cybersecurity</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Protecting systems and data from digital threats.</p>
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-globe text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Web Development</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Building modern, responsive web applications.</p>
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-network-wired text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Network Security</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Securing network infrastructures and communications.</p>
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <i class="fas fa-cloud text-4xl sm:text-5xl text-accent-green mb-4"></i>
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">Cloud Computing</h4>
-                    <p class="text-base sm:text-lg text-secondary-text">Designing and deploying scalable cloud solutions.</p>
+                <div class="block-3d block-blue p-6">
+                    <i class="fas fa-laptop-code text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold font-display mb-2">Programmer</h3>
+                    <p>I solve complex problems with logic and well-structured algorithms.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- GitHub Section -->
-        <section id="github" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">My GitHub Journey</h3>
-            <p class="text-lg sm:text-xl text-secondary-text mb-10">
-                As a GitHub enthusiast, I thrive on open-source contributions, late-night commits, and building projects that make a difference. Check out my activity below!
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-5">GitHub Stats</h4>
-                    <img src="https://github-readme-stats.vercel.app/api?username=zidhu-xd&show_icons=true&theme=dark&hide_border=true&text_color=FFFFFF&title_color=00CC00&icon_color=00CC00" alt="GitHub Stats" class="w-full h-auto max-w-full rounded-xl border-2 border-border-dark">
-                </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-5">Top Languages</h4>
-                    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=zidhu-xd&layout=compact&theme=dark&hide_border=true&text_color=FFFFFF&title_color=00CC00&icon_color=00CC00" alt="Top Languages" class="w-full h-auto max-w-full rounded-xl border-2 border-border-dark">
-                </div>
-            </div>
-            <p class="mt-10 text-lg sm:text-xl text-secondary-text text-center">
-                Visit my GitHub: <a href="https://github.com/zidhu-xd" class="text-accent-green hover:underline font-semibold">@zidhugram</a>
-            </p>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">My Creations</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <img src="https://placehold.co/400x250/00CC00/000000?text=CodeVault+UI" alt="CodeVault Project Screenshot" class="w-full h-auto rounded-xl mb-5 border-2 border-border-dark max-w-full">
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">CodeVault</h4>
-                    <p class="text-base sm:text-lg text-secondary-text mb-5">A secure, encrypted note-taking app for coders, built with Python and Flask, focusing on data privacy.</p>
-                    <a href="#" class="inline-block bg-accent-green text-primary-bg py-2.5 px-8 rounded-full text-lg shadow-md hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out font-semibold">
-                        View Project <i class="fas fa-external-link-alt ml-3 text-lg"></i>
-                    </a>
+        <section id="projects" class="py-16">
+            <h2 class="text-3xl font-bold font-display text-center mb-12 header-lime">Featured Projects</h2>
+            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+                <div class="block-3d block-pink p-8">
+                    <h3 class="text-2xl font-bold font-display mb-3">CodeVault</h3>
+                    <p class="text-purple-100 mb-4">A cross-platform, end-to-end encrypted note-taking application. Your thoughts are secured with military-grade encryption, accessible only by you.</p>
+                    <a href="#" class="font-bold text-white hover:underline transition">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
-                <div class="bg-secondary-bg p-6 rounded-xl shadow-subtle-card border-2 border-border-dark flex flex-col items-center justify-center text-center hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out">
-                    <img src="https://placehold.co/400x250/00CC00/000000?text=RetroTerm+Mockup" alt="RetroTerm Project Mockup" class="w-full h-auto rounded-xl mb-5 border-2 border-border-dark max-w-full">
-                    <h4 class="text-2xl sm:text-3xl font-display font-black text-primary-text mb-3">RetroTerm</h4>
-                    <p class="text-base sm:text-lg text-secondary-text mb-5">A terminal emulator with a classic aesthetic, coded in C++ and JavaScript, bringing nostalgia to the command line.</p>
-                    <a href="#" class="inline-block bg-accent-green text-primary-bg py-2.5 px-8 rounded-full text-lg shadow-md hover:shadow-panel-hover hover:scale-105 transition-all duration-400 ease-in-out font-semibold">
-                        View Project <i class="fas fa-external-link-alt ml-3 text-lg"></i>
-                    </a>
+                <div class="block-3d block-blue p-8">
+                    <h3 class="text-2xl font-bold font-display mb-3">RetroTerm</h3>
+                    <p class="text-purple-100 mb-4">A nostalgic terminal emulator with a CRT screen effect and customizable themes. A throwback for the modern command-line enthusiast.</p>
+                    <a href="#" class="font-bold text-white hover:underline transition">Try it Live <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="panel text-center">
-            <h3 class="text-4xl sm:text-5xl font-display font-black text-primary-text section-heading mb-10">Get in Touch</h3>
-            <p class="text-lg sm:text-xl text-secondary-text mb-8">Interested in collaborating or just want to chat about code? Reach out!</p>
-            <form id="contact-form" class="space-y-8">
-                <div>
-                    <label for="email" class="block text-primary-text text-base font-semibold mb-3 text-left">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="your.alias@example.com" class="w-full p-4 rounded-xl bg-secondary-bg border-2 border-border-dark focus:outline-none focus:ring-2 focus:ring-accent-green focus:border-transparent text-primary-text font-body transition-all duration-300" required>
-                </div>
-                <div>
-                    <label for="message" class="block text-primary-text text-base font-semibold mb-3 text-left">Your Message</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Let's connect and build something amazing..." class="w-full p-4 rounded-xl bg-secondary-bg border-2 border-border-dark focus:outline-none focus:ring-2 focus:ring-accent-green focus:border-transparent text-primary-text font-body resize-y transition-all duration-300" required></textarea>
-                </div>
-                <button type="submit" class="linktree-btn bg-accent-green text-primary-bg hover:bg-primary-bg hover:text-accent-green">
-                    Send Message <i class="fas fa-paper-plane ml-3"></i>
-                </button>
-                <div id="form-feedback" class="text-center text-sm mt-6 hidden"></div>
-            </form>
+        <section id="contact" class="max-w-2xl mx-auto py-16">
+            <h2 class="text-3xl font-bold font-display text-center mb-8 header-lime">Get In Touch</h2>
+            <div class="block-3d block-gold p-8">
+                <form id="contact-form" class="space-y-6">
+                    <div id="form-feedback" class="hidden p-4 rounded-md text-center font-semibold"></div>
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-purple-900">Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-purple-900">Email</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2 text-sm font-medium text-purple-900">Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none" required></textarea>
+                    </div>
+                    <button type="submit" class="block-3d block-blue w-full text-lg p-4 font-bold">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="text-center text-secondary-text text-sm sm:text-base py-8 mt-16 border-t-2 border-border-dark">
-        <p>© 2025 Zidhugram. Crafted with code and curiosity.</p>
-        <p class="mt-3 text-sm">Inspired by Linktree's simplicity.</p>
+    <footer class="text-center py-8 border-t border-white/10">
+        <p class="text-purple-300">&copy; 2025 Zidhugram. All Rights Reserved.</p>
+        <p class="text-sm text-purple-400 mt-1">Inspired by the simplicity of Linktree.</p>
     </footer>
 
+
     <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                const mobileMenu = document.getElementById('mobile-menu');
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
             });
         });
 
-        // Toggle mobile menu
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Slider functionality
-        const slidesContainer = document.querySelector('.slides-container');
-        const slides = document.querySelectorAll('.slide');
-        const prevBtn = document.querySelector('.prev');
-        const nextBtn = document.querySelector('.next');
+        // --- Highlights Slider ---
+        const sliderTrack = document.getElementById('slider-track');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        const slides = Array.from(sliderTrack.children);
+        const slideCount = slides.length;
         let currentIndex = 0;
 
-        function showSlide(index) {
-            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        function updateSliderPosition() {
+            sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-        }
-
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-
-        // Auto-slide every 5 seconds
-        setInterval(nextSlide, 5000);
-
-        // Initial display
-        showSlide(currentIndex);
-
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        const formFeedback = document.getElementById('form-feedback');
-        const TELEGRAM_BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk'; // Replace with your actual token
-        const TELEGRAM_CHAT_ID = '6303333846'; // Replace with your actual chat ID
-        const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-3"></i>';
-            formFeedback.classList.add('hidden');
-
-            const text = `New message from ${email}:\n\n${message}\n\nSent at: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}`;
-            const payload = {
-                chat_id: TELEGRAM_CHAT_ID,
-                text: text
-            };
-
-            try {
-                const response = await fetch(TELEGRAM_API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-                if (result.ok) {
-                    formFeedback.classList.remove('hidden');
-                    formFeedback.classList.add('text-green-600');
-                    formFeedback.textContent = 'Message sent successfully! I’ll get back to you soon.';
-                    contactForm.reset();
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                console.error('Telegram API Error:', error);
-                formFeedback.classList.remove('hidden');
-                formFeedback.classList.add('text-red-600');
-                formFeedback.textContent = 'Failed to send message. Please try again later.';
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-                setTimeout(() => formFeedback.classList.add('hidden'), 5000);
-            }
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSliderPosition();
         });
 
-        // Visit Notification
-        async function sendVisitNotification() {
-            const visitTime = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-            const pageUrl = window.location.href;
-            const userAgent = navigator.userAgent;
-            const screenWidth = window.screen.width;
-            const screenHeight = window.screen.height;
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateSliderPosition();
+        });
+        
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSliderPosition();
+        }, 5000);
 
-            let batteryInfo = 'N/A';
-            try {
-                if ('getBattery' in navigator) {
-                    const battery = await navigator.getBattery();
-                    const level = (battery.level * 100).toFixed(0);
-                    const chargingStatus = battery.charging ? 'Charging' : 'Not Charging';
-                    batteryInfo = `${level}% (${chargingStatus})`;
-                }
-            } catch (error) {
-                console.warn('Battery API not available or restricted:', error);
-                batteryInfo = 'Not available';
+        // --- Contact Form (Telegram Bot Integration) ---
+        const contactForm = document.getElementById('contact-form');
+        const formFeedback = document.getElementById('form-feedback');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk';
+            const CHAT_ID = '6303333846';
+
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonContent = submitButton.innerHTML;
+
+            if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
+                 showFeedback('Please configure the Telegram Bot Token and Chat ID in the script.', 'error');
+                 return;
             }
 
-            let deviceName = 'Unknown Device';
-            if (userAgent.includes('Android')) {
-                deviceName = 'Android Device';
-                const match = userAgent.match(/Android\s([0-9.]+)/);
-                if (match) deviceName += ` (v${match[1]})`;
-            } else if (userAgent.includes('iPhone')) {
-                deviceName = 'iPhone';
-            } else if (userAgent.includes('iPad')) {
-                deviceName = 'iPad';
-            } else if (userAgent.includes('Macintosh')) {
-                deviceName = 'Mac';
-            } else if (userAgent.includes('Windows')) {
-                deviceName = 'Windows PC';
-            } else if (userAgent.includes('Linux')) {
-                deviceName = 'Linux PC';
-            }
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
+            formFeedback.classList.add('hidden');
 
-            const text = `New visitor detected!\n` +
-                         `Time: ${visitTime}\n` +
-                         `Page: ${pageUrl}\n` +
-                         `Device: ${deviceName}\n` +
-                         `Resolution: ${screenWidth}x${screenHeight}\n` +
-                         `Battery: ${batteryInfo}\n` +
-                         `User Agent: ${userAgent}`;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
 
-            const payload = {
-                chat_id: TELEGRAM_CHAT_ID,
-                text: text
-            };
+            const text = `
+<b>New Message from Zidhugram Portfolio:</b>
+--------------------------------------
+<b>👤 Name:</b> ${name}
+<b>📧 Email:</b> ${email}
+<b>💬 Message:</b>
+${message}
+            `;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            const payload = { chat_id: CHAT_ID, text, parse_mode: 'HTML' };
 
             try {
-                await fetch(TELEGRAM_API_URL, {
+                const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+                const result = await response.json();
+                if (result.ok) {
+                    showFeedback('Message sent successfully! I’ll get back to you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.description || 'Failed to send message');
+                }
             } catch (error) {
-                console.error('Error sending visit notification:', error);
+                console.error('Error sending message:', error);
+                showFeedback(`Error: ${error.message}. Please try again later.`, 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonContent;
             }
+        });
+        
+        function showFeedback(message, type) {
+            formFeedback.textContent = message;
+            formFeedback.className = 'p-4 rounded-md text-center font-semibold'; // Reset classes
+            
+            if (type === 'success') {
+                formFeedback.classList.add('bg-green-500/80', 'text-white');
+            } else if (type === 'error') {
+                formFeedback.classList.add('bg-red-500/80', 'text-white');
+            }
+            
+            formFeedback.classList.remove('hidden');
+            setTimeout(() => formFeedback.classList.add('hidden'), 5000);
         }
 
-        window.onload = sendVisitNotification;
     </script>
+
 </body>
 </html>
