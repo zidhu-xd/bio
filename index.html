@@ -17,15 +17,16 @@
         /* Custom Font Definition */
         @font-face {
             font-family: 'Linik Sans';
-            src: url('fonts/linik-sans.black.ttf') format('truetype');
-            font-weight: 700; /* Bolder font weight */
+            /* NOTE: The font file path is local. For this preview, we'll fall back to system sans-serif fonts. */
+            /* src: url('fonts/linik-sans.black.ttf') format('truetype'); */
+            font-weight: 700;
             font-style: normal;
         }
 
-        /* Custom CSS for 3D effects, fonts, and textures */
+        /* --- Core Body & Typography --- */
         body {
-            background-color: #5C2D91; /* Reverted to original purple background */
-            font-family: 'Linik Sans', sans-serif; /* Apply custom font */
+            background-color: #5C2D91; /* Deep Violet Background */
+            font-family: 'Linik Sans', 'Inter', sans-serif; /* Apply custom font with fallback */
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -33,10 +34,21 @@
         }
 
         h1, h2, h3, h4, .font-display {
-            font-family: 'Linik Sans', sans-serif; /* Ensure headings also use the font */
+            font-family: 'Linik Sans', 'Inter', sans-serif; /* Ensure headings also use the font */
         }
         
-        /* Flashing animation for the header title */
+        /* --- Particle Canvas --- */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place behind all content */
+            opacity: 0.4;
+        }
+
+        /* --- Header & Title Animation --- */
         .flashing-title {
             animation: flash 2s infinite;
         }
@@ -44,12 +56,27 @@
         @keyframes flash {
             0%, 100% { 
                 opacity: 1; 
-                text-shadow: 0 0 10px #000000, 0 0 5px #74ff00;
+                text-shadow: 0 0 10px #000000, 0 0 5px #00f7ff; /* Teal glow */
             }
             50% { 
-                opacity: 0.6; 
+                opacity: 0.7; 
                 text-shadow: none; 
             }
+        }
+
+        /* --- Typewriter Effect --- */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.25rem; /* Match text size */
+            background-color: #74ff00;
+            animation: blink 0.7s infinite;
+            margin-left: 4px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
         /* --- Polished 3D Block Styling --- */
@@ -58,8 +85,8 @@
             border-width: 3px;
             border-color: #000000;
             box-shadow: 4px 4px 0px #000000;
-            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-            border-radius: 0.75rem; /* 12px for a softer look */
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            border-radius: 0.75rem; /* 12px */
         }
 
         .block-3d:hover {
@@ -71,58 +98,44 @@
             transform: translateY(2px) translateX(1px);
             box-shadow: 2px 2px 0px #000000;
         }
-
-        /* Gold Block */
+        
+        /* --- Original Color Palette Blocks --- */
         .block-gold {
             background-color: #FFD700; /* gold */
             color: #3D1E53;
             font-weight: 800;
         }
 
-        /* Pink Block */
         .block-pink {
             background-color: #FF69B4; /* hotpink */
             color: #000000; /* Black for readability */
             font-weight: 800;
         }
-        
-        /* Teal Block for About Me */
+
         .block-teal {
-            background-color: #0b2d39;
-            color: #ffffff; /* White text for contrast */
+            background-color: #0b2d39; /* Dark Teal */
+            color: #ffffff;
             font-weight: 800;
         }
-
-        /* Blue Block */
+        
         .block-blue {
             background-color: #1E90FF; /* dodgerblue */
             color: #ffffff;
             font-weight: 800;
         }
-        
+
         /* Lime/Green Accent for Headers */
         .header-lime {
-            color: #74ff00; /* Updated Color */
+            color: #74ff00; /* Neon Lime */
         }
 
-        /* Glassmorphism Card Style */
-        .card-glass {
-            background: rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Slider Styles */
+        /* --- Slider Styles --- */
         .slider-container {
             overflow: hidden;
             border-radius: 1rem;
             cursor: grab;
         }
-        .slider-container:active {
-            cursor: grabbing;
-        }
+        .slider-container:active { cursor: grabbing; }
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
@@ -131,9 +144,81 @@
             min-width: 100%;
             box-sizing: border-box;
         }
+
+        /* --- Tooltip Styles --- */
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #0b2d39;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the icon */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- "Not a Bot" Switch --- */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #00f7ff; /* Teal */
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
     </style>
 </head>
 <body class="antialiased">
+    
+    <!-- Background Particle Effect -->
+    <canvas id="particle-canvas"></canvas>
 
     <!-- Header -->
     <header class="bg-black/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
@@ -149,25 +234,27 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-12 relative z-10">
 
         <!-- Hero Section -->
         <section id="hero" class="py-8 md:py-16">
             <div class="max-w-xl mx-auto flex flex-row items-center justify-start gap-4 sm:gap-8">
                 <!-- Profile Image -->
-                <img src="images/zidhu-logo.png" 
+                <img src="https://placehold.co/144x144/5C2D91/FFFFFF?text=ZIDHU" 
                      alt="Zidhu's Profile Picture" 
                      class="w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 shadow-lg block-3d flex-shrink-0" style="border-color: #000;">
                 
                 <!-- Profile Text -->
                 <div class="text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-display uppercase tracking-wider text-white">Zidhu XD</h1>
-                    <p class="text-base sm:text-lg md:text-xl mt-1 sm:mt-2 header-lime font-semibold">Developer • Programmer</p>
+                    <p class="text-base sm:text-lg md:text-xl mt-1 sm:mt-2 header-lime font-semibold">
+                        <span id="typewriter"></span><span class="typewriter-cursor"></span>
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- About Section with Integrated Links -->
+        <!-- About Section -->
         <section id="about" class="max-w-3xl mx-auto py-16 text-center">
             <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">About Me</h2>
             <div class="block-3d block-teal p-8 text-lg leading-relaxed">
@@ -177,11 +264,20 @@
                 <p class="mb-8">
                     I hope you find it good—it might look like a simple page, but there are thousands of lines of code running behind it to create what you see right now. As a tech nerd, I'm always active on social media to stay updated.
                 </p>
-                <!-- Links moved here -->
-                <div class="max-w-sm mx-auto space-y-6">
-                    <a id="instagram-link" href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
-                        <i class="fab fa-instagram mr-2"></i> Instagram
-                    </a>
+                <!-- Social Links with Tooltips -->
+                <div class="flex justify-center items-center space-x-6">
+                    <div class="tooltip-container">
+                        <a id="instagram-link" href="https://instagram.com/zidhuxd" class="text-4xl text-white/80 hover:text-white transition-transform duration-200 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <span class="tooltip-text">Instagram</span>
+                    </div>
+                    <div class="tooltip-container">
+                        <a href="https://github.com/zidhuxd" target="_blank" class="text-4xl text-white/80 hover:text-white transition-transform duration-200 hover:scale-110">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <span class="tooltip-text">GitHub</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -190,46 +286,19 @@
         <section id="skills" class="max-w-4xl mx-auto py-16 text-center">
             <h2 class="inline-block text-4xl font-extrabold font-display mb-12 header-lime">My Skills</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-globe text-3xl"></i>
-                    <h3 class="text-lg font-bold">Web Development</h3>
-                </div>
-                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-code text-3xl"></i>
-                    <h3 class="text-lg font-bold">Programming</h3>
-                </div>
-                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-file-code text-3xl"></i>
-                    <h3 class="text-lg font-bold">Script Maker</h3>
-                </div>
-                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-network-wired text-3xl"></i>
-                    <h3 class="text-lg font-bold">RAT Expert</h3>
-                </div>
-                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4">
-                    <i class="fab fa-android text-3xl"></i>
-                    <h3 class="text-lg font-bold">App Modder</h3>
-                </div>
-                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-bug text-3xl"></i>
-                    <h3 class="text-lg font-bold">Bug Finder</h3>
-                </div>
-                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-gamepad text-3xl"></i>
-                    <h3 class="text-lg font-bold">Game Cracker</h3>
-                </div>
-                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-robot text-3xl"></i>
-                    <h3 class="text-lg font-bold">AI Expert</h3>
-                </div>
-                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4">
-                    <i class="fas fa-lightbulb text-3xl"></i>
-                    <h3 class="text-lg font-bold">Logic Solver</h3>
-                </div>
+                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4"><i class="fas fa-globe text-3xl"></i><h3 class="text-lg font-bold">Web Development</h3></div>
+                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4"><i class="fas fa-code text-3xl"></i><h3 class="text-lg font-bold">Programming</h3></div>
+                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4"><i class="fas fa-file-code text-3xl"></i><h3 class="text-lg font-bold">Script Maker</h3></div>
+                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4"><i class="fas fa-network-wired text-3xl"></i><h3 class="text-lg font-bold">RAT Expert</h3></div>
+                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4"><i class="fab fa-android text-3xl"></i><h3 class="text-lg font-bold">App Modder</h3></div>
+                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4"><i class="fas fa-bug text-3xl"></i><h3 class="text-lg font-bold">Bug Finder</h3></div>
+                <div class="block-3d block-blue p-4 flex items-center justify-center gap-4"><i class="fas fa-gamepad text-3xl"></i><h3 class="text-lg font-bold">Game Cracker</h3></div>
+                <div class="block-3d block-gold p-4 flex items-center justify-center gap-4"><i class="fas fa-robot text-3xl"></i><h3 class="text-lg font-bold">AI Expert</h3></div>
+                <div class="block-3d block-pink p-4 flex items-center justify-center gap-4"><i class="fas fa-lightbulb text-3xl"></i><h3 class="text-lg font-bold">Logic Solver</h3></div>
             </div>
         </section>
 
-        <!-- Highlights Slider Section -->
+        <!-- Projects Slider Section -->
         <section id="highlights" class="py-16 text-center">
             <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">Projects</h2>
             <div class="max-w-2xl mx-auto relative">
@@ -239,7 +308,7 @@
                         <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
                                 <div class="mb-4 block-3d block-gold p-2 w-full aspect-video overflow-hidden">
-                                    <img src="images/instaxd.png" alt="Insta-XD Project Image" class="w-full h-full object-cover">
+                                    <img src="https://placehold.co/600x338/0b2d39/FFFFFF?text=Insta-XD" alt="Insta-XD Project Image" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="text-3xl font-bold font-display mb-2 text-white">Insta-XD</h3>
                                 <p class="text-gray-200">A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
@@ -249,7 +318,7 @@
                         <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
                                 <div class="mb-4 block-3d block-gold p-2 w-full aspect-video overflow-hidden">
-                                    <img src="images/pussyrat.png" alt="Pussy-RAT Project Image" class="w-full h-full object-cover">
+                                     <img src="https://placehold.co/600x338/0b2d39/FFFFFF?text=Pussy-RAT" alt="Pussy-RAT Project Image" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="text-3xl font-bold font-display mb-2 text-white">Pussy-RAT</h3>
                                 <p class="text-gray-200">An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
@@ -281,6 +350,15 @@
                         <label for="message" class="block mb-2 text-lg font-medium text-gray-800">Message</label>
                         <textarea id="message" name="message" rows="5" class="w-full p-3 bg-gray-200 text-gray-800 rounded-lg border-2 border-gray-400 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required></textarea>
                     </div>
+                    <div class="flex items-center justify-between pt-2">
+                        <label for="bot-check" class="flex items-center cursor-pointer">
+                            <span class="text-lg font-medium text-gray-800 mr-4">I'm not a bot</span>
+                            <label class="switch">
+                                <input type="checkbox" id="bot-check">
+                                <span class="slider"></span>
+                            </label>
+                        </label>
+                    </div>
                     <button type="submit" class="block-3d block-blue w-full text-lg p-4 font-bold">
                         Send Message <i class="fas fa-paper-plane ml-2"></i>
                     </button>
@@ -291,7 +369,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center py-8 border-t-2 border-black">
+    <footer class="text-center py-8 border-t-2 border-black relative z-10">
         <p class="text-gray-300">&copy; 2025 Zidhugram. All Rights Reserved.</p>
         <p class="text-sm text-gray-400 mt-1">Self coded with love.</p>
     </footer>
@@ -299,7 +377,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Highlights Slider ---
+            
+            // --- Particle Animation ---
+            const canvas = document.getElementById('particle-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let particles = [];
+                
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 2 + 1;
+                        this.speedX = Math.random() * 1 - 0.5;
+                        this.speedY = Math.random() * 1 - 0.5;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        if (this.size > 0.2) this.size -= 0.01;
+                    }
+                    draw() {
+                        ctx.fillStyle = 'rgba(0, 247, 255, 0.8)'; // Teal particles
+                        ctx.strokeStyle = 'rgba(0, 247, 255, 0.8)';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.closePath();
+                        ctx.fill();
+                    }
+                }
+
+                function handleParticles() {
+                    for (let i = 0; i < particles.length; i++) {
+                        particles[i].update();
+                        particles[i].draw();
+                        if (particles[i].size <= 0.3) {
+                            particles.splice(i, 1);
+                            i--;
+                        }
+                    }
+                }
+                
+                function animateParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    if (particles.length < 100) { // Limit particle count
+                         particles.push(new Particle());
+                    }
+                    handleParticles();
+                    requestAnimationFrame(animateParticles);
+                }
+                animateParticles();
+            }
+
+            // --- Typewriter Effect ---
+            const typewriterElement = document.getElementById('typewriter');
+            if (typewriterElement) {
+                const text = "Developer • Programmer";
+                let index = 0;
+                function type() {
+                    if (index < text.length) {
+                        typewriterElement.textContent += text.charAt(index);
+                        index++;
+                        setTimeout(type, 100);
+                    } else {
+                        // Optionally reset and loop
+                        setTimeout(() => {
+                            typewriterElement.textContent = '';
+                            index = 0;
+                            type();
+                        }, 5000); // Wait 5 seconds before restarting
+                    }
+                }
+                type();
+            }
+
+            // --- Highlights Slider (Existing Logic) ---
             const sliderContainer = document.getElementById('slider-container');
             const sliderTrack = document.getElementById('slider-track');
             const prevBtn = document.getElementById('prev-slide');
@@ -367,12 +527,11 @@
                 sliderContainer.addEventListener('mouseleave', resetAutoSlide);
             }
             
-            // --- Instagram Deep Link ---
+            // --- Instagram Deep Link (Existing Logic) ---
             const instagramLink = document.getElementById('instagram-link');
             if (instagramLink) {
                 instagramLink.addEventListener('click', function(e) {
                     e.preventDefault();
-
                     const username = 'zidhuxd';
                     const appURI = `instagram://user?username=${username}`;
                     const webURL = `https://instagram.com/${username}`;
@@ -381,7 +540,6 @@
                     const isAndroid = /Android/.test(navigator.userAgent);
 
                     if (isIOS || isAndroid) {
-                        // Create an iframe to attempt to open the app URI
                         const iframe = document.createElement('iframe');
                         iframe.style.display = 'none';
                         iframe.src = appURI;
@@ -391,14 +549,13 @@
                             window.location.href = webURL;
                         }, 2500);
 
-                        // If the app opens, the page visibility will change
-                        document.addEventListener('visibilitychange', function() {
+                        document.addEventListener('visibilitychange', function onVisibilityChange() {
                             if (document.hidden) {
                                 clearTimeout(fallbackTimeout);
+                                document.removeEventListener('visibilitychange', onVisibilityChange);
                             }
                         });
                     } else {
-                        // For desktop, just open the web URL
                         window.open(webURL, '_blank');
                     }
                 });
@@ -417,6 +574,11 @@
 
                     const submitButton = contactForm.querySelector('button[type="submit"]');
                     const originalButtonContent = submitButton.innerHTML;
+                    
+                    if (!document.getElementById('bot-check').checked) {
+                        showFeedback('Please confirm you are not a bot.', 'error');
+                        return;
+                    }
 
                     if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
                         showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
@@ -432,12 +594,12 @@
                     const message = document.getElementById('message').value;
 
                     const text = `
-        <b>New Message from Zidhugram Portfolio:</b>
-        --------------------------------------
-        <b>👤 Name:</b> ${name}
-        <b>📸 Instagram:</b> @${instagram}
-        <b>💬 Message:</b>
-        ${message}
+<b>New Message from Zidhugram Portfolio:</b>
+--------------------------------------
+<b>👤 Name:</b> ${name}
+<b>📸 Instagram:</b> @${instagram}
+<b>💬 Message:</b>
+${message}
                     `;
 
                     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
