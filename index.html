@@ -8,25 +8,28 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Custom Styles and Tailwind Config -->
     <style>
+        /* Custom Font Definition */
+        @font-face {
+            font-family: 'Linik Sans';
+            src: url('fonts/linik-sans.black.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         /* Custom CSS for 3D effects, fonts, and textures */
         body {
             background-color: #5C2D91;
-            font-family: 'IBM Plex Sans', sans-serif;
+            font-family: 'Linik Sans', sans-serif; /* Apply custom font */
             color: #ffffff;
         }
 
         h1, h2, h3, h4, .font-display {
-            font-family: 'Red Hat Display', sans-serif;
+            font-family: 'Linik Sans', sans-serif; /* Ensure headings also use the font */
         }
         
         /* Flashing animation for the header title */
@@ -326,8 +329,8 @@
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk';
-            const CHAT_ID = '6303333846';
+            const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';
+            const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
 
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonContent = submitButton.innerHTML;
