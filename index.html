@@ -111,6 +111,10 @@
         .slider-container {
             overflow: hidden;
             border-radius: 1rem;
+            cursor: grab;
+        }
+        .slider-container:active {
+            cursor: grabbing;
         }
         .slider-track {
             display: flex;
@@ -126,15 +130,15 @@
 
     <!-- Header -->
     <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <nav class="w-full px-4 py-3 flex justify-between items-center">
             <!-- Main Brand Heading -->
-            <a href="#" class="text-2xl font-extrabold font-display flashing-title text-white">zidhugram</a>
+            <a href="#" class="text-xl sm:text-2xl font-extrabold font-display flashing-title text-white">zidhugram</a>
             
             <!-- Navigation Links for All Screens -->
             <div class="flex space-x-2">
-                <a href="#about" class="block-3d block-gold text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">About</a>
-                <a href="#highlights" class="block-3d block-pink text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">Highlights</a>
-                <a href="#contact" class="block-3d block-blue text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">Contact</a>
+                <a href="#about" class="block-3d block-gold text-xs font-semibold px-3 py-1">About</a>
+                <a href="#highlights" class="block-3d block-pink text-xs font-semibold px-3 py-1">Projects</a>
+                <a href="#contact" class="block-3d block-blue text-xs font-semibold px-3 py-1">Contact</a>
             </div>
         </nav>
     </header>
@@ -184,11 +188,14 @@
         <section id="highlights" class="py-16 text-center">
             <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">Highlights</h2>
             <div class="max-w-2xl mx-auto relative">
-                <div class="slider-container block-3d block-blue p-2">
+                <div id="slider-container" class="slider-container block-3d block-blue p-2">
                     <div id="slider-track" class="slider-track">
                         <!-- Slide 1 -->
                         <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
+                                <div class="mb-4 block-3d block-gold p-2 w-full aspect-video flex items-center justify-center">
+                                    <i class="fab fa-instagram text-6xl text-purple-900"></i>
+                                </div>
                                 <h3 class="text-3xl font-bold font-display mb-2">Insta-XD</h3>
                                 <p>A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
                             </div>
@@ -196,6 +203,9 @@
                         <!-- Slide 2 -->
                         <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
+                                <div class="mb-4 block-3d block-gold p-2 w-full aspect-video flex items-center justify-center">
+                                    <i class="fas fa-network-wired text-6xl text-purple-900"></i>
+                                </div>
                                 <h3 class="text-3xl font-bold font-display mb-2">Pussy-RAT</h3>
                                 <p>An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
                             </div>
@@ -241,8 +251,8 @@
                         <input type="text" id="name" name="name" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
-                        <label for="email" class="block mb-2 text-lg font-medium text-purple-900">Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
+                        <label for="instagram" class="block mb-2 text-lg font-medium text-purple-900">Instagram Username</label>
+                        <input type="text" id="instagram" name="instagram" class="w-full p-3 bg-purple-100 text-purple-900 rounded-lg border-2 border-purple-300 focus:ring-pink-500 focus:border-pink-500 outline-none transition" required>
                     </div>
                     <div>
                         <label for="message" class="block mb-2 text-lg font-medium text-purple-900">Message</label>
@@ -265,123 +275,155 @@
 
 
     <script>
-        // --- Highlights Slider ---
-        const sliderTrack = document.getElementById('slider-track');
-        const prevBtn = document.getElementById('prev-slide');
-        const nextBtn = document.getElementById('next-slide');
-        if (sliderTrack) {
-            const slides = Array.from(sliderTrack.children);
-            const slideCount = slides.length;
-            let currentIndex = 0;
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Highlights Slider ---
+            const sliderContainer = document.getElementById('slider-container');
+            const sliderTrack = document.getElementById('slider-track');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
 
-            function updateSliderPosition() {
-                if(sliderTrack) {
-                    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+            if (sliderTrack && sliderContainer) {
+                const slides = Array.from(sliderTrack.children);
+                const slideCount = slides.length;
+                let currentIndex = 0;
+                let isSwiping = false;
+                let touchStartX = 0;
+                let touchEndX = 0;
+                const swipeThreshold = 50; // Min pixels for a swipe
+
+                function updateSliderPosition() {
+                    if (sliderTrack) {
+                        sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    }
                 }
-            }
 
-            if(nextBtn) {
-                nextBtn.addEventListener('click', () => {
+                function next() {
                     currentIndex = (currentIndex + 1) % slideCount;
                     updateSliderPosition();
-                });
-            }
+                }
 
-            if(prevBtn) {
-                prevBtn.addEventListener('click', () => {
+                function prev() {
                     currentIndex = (currentIndex - 1 + slideCount) % slideCount;
                     updateSliderPosition();
+                }
+
+                let autoSlideInterval = setInterval(next, 5000);
+
+                function resetAutoSlide() {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = setInterval(next, 5000);
+                }
+
+                if (nextBtn) nextBtn.addEventListener('click', () => { next(); resetAutoSlide(); });
+                if (prevBtn) prevBtn.addEventListener('click', () => { prev(); resetAutoSlide(); });
+
+                // Swipe functionality
+                sliderContainer.addEventListener('touchstart', e => {
+                    isSwiping = true;
+                    touchStartX = e.touches[0].clientX;
+                    clearInterval(autoSlideInterval);
+                });
+
+                sliderContainer.addEventListener('touchend', e => {
+                    if (!isSwiping) return;
+                    touchEndX = e.changedTouches[0].clientX;
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > swipeThreshold) {
+                        if (diff > 0) { // Swiped left
+                            next();
+                        } else { // Swiped right
+                            prev();
+                        }
+                    }
+                    isSwiping = false;
+                    resetAutoSlide();
+                });
+                
+                // Pause on hover
+                sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                sliderContainer.addEventListener('mouseleave', resetAutoSlide);
+            }
+
+            // --- Contact Form (Telegram Bot Integration) ---
+            const contactForm = document.getElementById('contact-form');
+            const formFeedback = document.getElementById('form-feedback');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+
+                    const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your actual token
+                    const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'; // Replace with your actual chat ID
+
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalButtonContent = submitButton.innerHTML;
+
+                    if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
+                        showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
+                        return;
+                    }
+
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
+                    formFeedback.classList.add('hidden');
+
+                    const name = document.getElementById('name').value;
+                    const instagram = document.getElementById('instagram').value;
+                    const message = document.getElementById('message').value;
+
+                    const text = `
+        <b>New Message from Zidhugram Portfolio:</b>
+        --------------------------------------
+        <b>👤 Name:</b> ${name}
+        <b>📸 Instagram:</b> @${instagram}
+        <b>💬 Message:</b>
+        ${message}
+                    `;
+
+                    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                    const payload = { chat_id: CHAT_ID, text, parse_mode: 'HTML' };
+
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const result = await response.json();
+                        if (result.ok) {
+                            showFeedback('Message sent successfully! I’ll get back to you soon.', 'success');
+                            contactForm.reset();
+                        } else {
+                            throw new Error(result.description || 'Failed to send message');
+                        }
+                    } catch (error) {
+                        console.error('Error sending message:', error);
+                        showFeedback(`Error: ${error.message}. Please try again later.`, 'error');
+                    } finally {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonContent;
+                    }
                 });
             }
-            
-            // Auto-slide every 5 seconds
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % slideCount;
-                updateSliderPosition();
-            }, 5000);
-        }
 
+            function showFeedback(message, type) {
+                if (formFeedback) {
+                    formFeedback.textContent = message;
+                    formFeedback.className = 'p-4 rounded-lg text-center font-semibold'; // Reset classes
 
-        // --- Contact Form (Telegram Bot Integration) ---
-        const contactForm = document.getElementById('contact-form');
-        const formFeedback = document.getElementById('form-feedback');
-
-        if(contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your actual token
-                const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'; // Replace with your actual chat ID
-
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalButtonContent = submitButton.innerHTML;
-
-                if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
-                     showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
-                     return;
-                }
-
-                submitButton.disabled = true;
-                submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
-                formFeedback.classList.add('hidden');
-
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-
-                const text = `
-    <b>New Message from Zidhugram Portfolio:</b>
-    --------------------------------------
-    <b>👤 Name:</b> ${name}
-    <b>📧 Email:</b> ${email}
-    <b>💬 Message:</b>
-    ${message}
-                `;
-
-                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                const payload = { chat_id: CHAT_ID, text, parse_mode: 'HTML' };
-
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    if (result.ok) {
-                        showFeedback('Message sent successfully! I’ll get back to you soon.', 'success');
-                        contactForm.reset();
-                    } else {
-                        throw new Error(result.description || 'Failed to send message');
+                    if (type === 'success') {
+                        formFeedback.classList.add('bg-green-500/90', 'text-white');
+                    } else if (type === 'error') {
+                        formFeedback.classList.add('bg-red-500/90', 'text-white');
                     }
-                } catch (error) {
-                    console.error('Error sending message:', error);
-                    showFeedback(`Error: ${error.message}. Please try again later.`, 'error');
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.innerHTML = originalButtonContent;
-                }
-            });
-        }
-        
-        function showFeedback(message, type) {
-            if(formFeedback) {
-                formFeedback.textContent = message;
-                formFeedback.className = 'p-4 rounded-lg text-center font-semibold'; // Reset classes
-                
-                if (type === 'success') {
-                    formFeedback.classList.add('bg-green-500/90', 'text-white');
-                } else if (type === 'error') {
-                    formFeedback.classList.add('bg-red-500/90', 'text-white');
-                }
-                
-                formFeedback.classList.remove('hidden');
-                setTimeout(() => {
-                    formFeedback.classList.add('hidden');
-                }, 5000);
-            }
-        }
 
+                    formFeedback.classList.remove('hidden');
+                    setTimeout(() => {
+                        formFeedback.classList.add('hidden');
+                    }, 5000);
+                }
+            }
+        });
     </script>
 
 </body>
