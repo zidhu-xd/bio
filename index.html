@@ -44,7 +44,7 @@
         @keyframes flash {
             0%, 100% { 
                 opacity: 1; 
-                text-shadow: 0 0 10px #000000, 0 0 5px #c0ff00;
+                text-shadow: 0 0 10px #000000, 0 0 5px #74ff00;
             }
             50% { 
                 opacity: 0.6; 
@@ -102,7 +102,7 @@
         
         /* Lime/Green Accent for Headers */
         .header-lime {
-            color: #c0ff00;
+            color: #74ff00; /* Updated Color */
         }
 
         /* Glassmorphism Card Style */
@@ -179,14 +179,8 @@
                 </p>
                 <!-- Links moved here -->
                 <div class="max-w-sm mx-auto space-y-6">
-                    <a href="https://github.com/zidhu-xd" class="block block-3d block-gold w-full text-lg text-center p-4">
-                        <i class="fab fa-github mr-2"></i> GitHub
-                    </a>
-                    <a href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
+                    <a id="instagram-link" href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
                         <i class="fab fa-instagram mr-2"></i> Instagram
-                    </a>
-                    <a href="https://t.me/zidhuxd" class="block block-3d block-blue w-full text-lg text-center p-4">
-                        <i class="fab fa-telegram mr-2"></i> Telegram
                     </a>
                 </div>
             </div>
@@ -350,6 +344,43 @@
                 // Pause on hover
                 sliderContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
                 sliderContainer.addEventListener('mouseleave', resetAutoSlide);
+            }
+            
+            // --- Instagram Deep Link ---
+            const instagramLink = document.getElementById('instagram-link');
+            if (instagramLink) {
+                instagramLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const username = 'zidhuxd';
+                    const appURI = `instagram://user?username=${username}`;
+                    const webURL = `https://instagram.com/${username}`;
+                    
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+                    const isAndroid = /Android/.test(navigator.userAgent);
+
+                    if (isIOS || isAndroid) {
+                        // Create an iframe to attempt to open the app URI
+                        const iframe = document.createElement('iframe');
+                        iframe.style.display = 'none';
+                        iframe.src = appURI;
+                        document.body.appendChild(iframe);
+
+                        const fallbackTimeout = setTimeout(() => {
+                            window.location.href = webURL;
+                        }, 2500);
+
+                        // If the app opens, the page visibility will change
+                        document.addEventListener('visibilitychange', function() {
+                            if (document.hidden) {
+                                clearTimeout(fallbackTimeout);
+                            }
+                        });
+                    } else {
+                        // For desktop, just open the web URL
+                        window.open(webURL, '_blank');
+                    }
+                });
             }
 
             // --- Contact Form (Telegram Bot Integration) ---
