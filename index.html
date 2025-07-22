@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>zidhugram</title>
     <meta name="description" content="Personal Bio Webpage, Made by ZidhuXD.">
     
@@ -29,6 +29,7 @@
             color: #ffffff;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         h1, h2, h3, h4, .font-display {
@@ -42,8 +43,8 @@
 
         @keyframes flash {
             0%, 100% { 
-                opacity: 2; 
-                text-shadow: 2 0 10px #000000, 0 0 5px #c0ff00;
+                opacity: 1; 
+                text-shadow: 0 0 10px #000000, 0 0 5px #c0ff00;
             }
             50% { 
                 opacity: 0.6; 
@@ -54,7 +55,7 @@
         /* --- Polished 3D Block Styling --- */
         .block-3d {
             position: relative;
-            border-width: 2px;
+            border-width: 3px;
             border-color: #000000;
             box-shadow: 4px 4px 0px #000000;
             transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
@@ -125,30 +126,17 @@
 
     <!-- Header -->
     <header class="bg-purple-900/30 backdrop-blur-sm sticky top-0 z-50 border-b-2 border-black">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold font-display flashing-title text-white">zidhugram</a>
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Main Brand Heading -->
+            <a href="#" class="text-2xl font-extrabold font-display flashing-title text-white">zidhugram</a>
             
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-4">
-                <a href="#about" class="block-3d block-gold text-sm font-semibold px-6 py-2">About</a>
-                <a href="#projects" class="block-3d block-pink text-sm font-semibold px-6 py-2">Projects</a>
-                <a href="#contact" class="block-3d block-blue text-sm font-semibold px-6 py-2">Contact</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="menu-btn" class="text-white focus:outline-none text-2xl">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <!-- Navigation Links for All Screens -->
+            <div class="flex space-x-2">
+                <a href="#about" class="block-3d block-gold text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">About</a>
+                <a href="#highlights" class="block-3d block-pink text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">Highlights</a>
+                <a href="#contact" class="block-3d block-blue text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4">Contact</a>
             </div>
         </nav>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-purple-900/95 backdrop-blur-lg">
-            <a href="#about" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">About</a>
-            <a href="#projects" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">Projects</a>
-            <a href="#contact" class="block py-4 px-6 text-center text-lg hover:bg-purple-800/50 transition-colors duration-300">Contact</a>
-        </div>
     </header>
 
     <main class="container mx-auto px-6 py-12">
@@ -169,54 +157,54 @@
             </div>
         </section>
 
-       <!-- Links Section -->
-    <section id="links" class="max-w-md mx-auto space-y-6 my-12">
-        <a href="https://github.com/zidhu-xd" class="block block-3d block-gold w-full text-lg text-center p-4">
-            <i class="fab fa-github mr-2"></i> GitHub
-        </a>
+        <!-- Links Section -->
+        <section id="links" class="max-w-md mx-auto space-y-6 my-12">
+            <a href="https://github.com/zidhu-xd" class="block block-3d block-gold w-full text-lg text-center p-4">
+                <i class="fab fa-github mr-2"></i> GitHub
+            </a>
             <a href="https://instagram.com/zidhuxd" class="block block-3d block-pink w-full text-lg text-center p-4">
                 <i class="fab fa-instagram mr-2"></i> Instagram
             </a>
-            <a href="#projects" class="block block-3d block-blue w-full text-lg text-center p-4">
-                <i class="fas fa-folder-open mr-2"></i> View My Projects
+            <a href="#highlights" class="block block-3d block-blue w-full text-lg text-center p-4">
+                <i class="fas fa-star mr-2"></i> View My Highlights
             </a>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="max-w-3xl mx-auto py-16">
-            <h2 class="text-4xl font-extrabold font-display text-center mb-8 header-lime">About Me</h2>
-            <div class="card-glass p-8 text-center text-lg leading-relaxed">
+        <section id="about" class="max-w-3xl mx-auto py-16 text-center">
+            <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">About Me</h2>
+            <div class="block-3d block-pink p-8 text-lg leading-relaxed">
                 <p>
-                    Hello! I'm ZidhuXD, . I thrive on building elegant, minimal, and secure solutions. My journey is fueled by a relentless curiosity for reverse engineering, cybersecurity, and crafting unique digital experiences.
+                    Hello! I'm ZidhuXD. I thrive on building elegant, minimal, and secure solutions. My journey is fueled by a relentless curiosity for reverse engineering, cybersecurity, and crafting unique digital experiences.
                 </p>
             </div>
         </section>
 
         <!-- Highlights Slider Section -->
-        <section id="highlights" class="py-16">
-            <h2 class="text-4xl font-extrabold font-display text-center mb-8 header-lime">Highlights</h2>
+        <section id="highlights" class="py-16 text-center">
+            <h2 class="inline-block text-4xl font-extrabold font-display mb-8 header-lime">Highlights</h2>
             <div class="max-w-2xl mx-auto relative">
-                <div class="slider-container card-glass">
+                <div class="slider-container block-3d block-blue p-2">
                     <div id="slider-track" class="slider-track">
                         <!-- Slide 1 -->
-                        <div class="slider-item p-8">
+                        <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
                                 <h3 class="text-3xl font-bold font-display mb-2">Insta-XD</h3>
-                                <p class="text-purple-200">A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
+                                <p>A powerful, self-hosted Instagram modification offering unique features and total data privacy. Built for enthusiasts who demand more control.</p>
                             </div>
                         </div>
                         <!-- Slide 2 -->
-                        <div class="slider-item p-8">
+                        <div class="slider-item p-6">
                             <div class="h-full flex flex-col justify-center items-center text-center">
                                 <h3 class="text-3xl font-bold font-display mb-2">Pussy-RAT</h3>
-                                <p class="text-purple-200">An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
+                                <p>An educational Remote Access Tool developed to demonstrate system vulnerabilities and the importance of robust security practices. For research purposes only.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                  <!-- Slider Controls -->
-                <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-left"></i></button>
-                <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-right"></i></button>
+                <button id="prev-slide" class="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-slide" class="absolute top-1/2 right-0 -translate-y-1/2 translate-x-4 sm:translate-x-12 text-3xl text-white/50 hover:text-white transition-transform duration-200 hover:scale-125"><i class="fas fa-chevron-right"></i></button>
             </div>
         </section>
 
@@ -238,23 +226,6 @@
                     <i class="fas fa-laptop-code text-5xl mb-4"></i>
                     <h3 class="text-3xl font-bold font-display mb-2">Programmer</h3>
                     <p class="text-lg">I solve complex problems with logic and well-structured algorithms.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-16">
-            <h2 class="text-4xl font-extrabold font-display text-center mb-12 header-lime">Featured Projects</h2>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-                <div class="block-3d block-pink p-8">
-                    <h3 class="text-3xl font-bold font-display mb-3">CodeVault</h3>
-                    <p class="text-purple-100 mb-4">A cross-platform, end-to-end encrypted note-taking application. Your thoughts are secured with military-grade encryption, accessible only by you.</p>
-                    <a href="#" class="font-bold text-white hover:underline transition">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
-                </div>
-                <div class="block-3d block-blue p-8">
-                    <h3 class="text-3xl font-bold font-display mb-3">RetroTerm</h3>
-                    <p class="text-purple-100 mb-4">A nostalgic terminal emulator with a CRT screen effect and customizable themes. A throwback for the modern command-line enthusiast.</p>
-                    <a href="#" class="font-bold text-white hover:underline transition">Try it Live <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             </div>
         </section>
@@ -294,127 +265,121 @@
 
 
     <script>
-        // --- Mobile Menu Toggle ---
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuBtn.querySelector('i').classList.remove('fa-times');
-                menuBtn.querySelector('i').classList.add('fa-bars');
-            });
-        });
-
         // --- Highlights Slider ---
         const sliderTrack = document.getElementById('slider-track');
         const prevBtn = document.getElementById('prev-slide');
         const nextBtn = document.getElementById('next-slide');
-        const slides = Array.from(sliderTrack.children);
-        const slideCount = slides.length;
-        let currentIndex = 0;
+        if (sliderTrack) {
+            const slides = Array.from(sliderTrack.children);
+            const slideCount = slides.length;
+            let currentIndex = 0;
 
-        function updateSliderPosition() {
-            sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+            function updateSliderPosition() {
+                if(sliderTrack) {
+                    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
+            }
+
+            if(nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % slideCount;
+                    updateSliderPosition();
+                });
+            }
+
+            if(prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                    updateSliderPosition();
+                });
+            }
+            
+            // Auto-slide every 5 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSliderPosition();
+            }, 5000);
         }
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateSliderPosition();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-            updateSliderPosition();
-        });
-        
-        // Auto-slide every 5 seconds
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % slideCount;
-            updateSliderPosition();
-        }, 5000);
 
         // --- Contact Form (Telegram Bot Integration) ---
         const contactForm = document.getElementById('contact-form');
         const formFeedback = document.getElementById('form-feedback');
 
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        if(contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-            const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your actual token
-            const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'; // Replace with your actual chat ID
+                const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN'; // Replace with your actual token
+                const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID'; // Replace with your actual chat ID
 
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalButtonContent = submitButton.innerHTML;
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalButtonContent = submitButton.innerHTML;
 
-            if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
-                 showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
-                 return;
-            }
-
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
-            formFeedback.classList.add('hidden');
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            const text = `
-<b>New Message from Zidhugram Portfolio:</b>
---------------------------------------
-<b>👤 Name:</b> ${name}
-<b>📧 Email:</b> ${email}
-<b>💬 Message:</b>
-${message}
-            `;
-
-            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-            const payload = { chat_id: CHAT_ID, text, parse_mode: 'HTML' };
-
-            try {
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-                if (result.ok) {
-                    showFeedback('Message sent successfully! I’ll get back to you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.description || 'Failed to send message');
+                if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
+                     showFeedback('This form is not yet configured. Please contact the site owner.', 'error');
+                     return;
                 }
-            } catch (error) {
-                console.error('Error sending message:', error);
-                showFeedback(`Error: ${error.message}. Please try again later.`, 'error');
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonContent;
-            }
-        });
+
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ml-2"></i>';
+                formFeedback.classList.add('hidden');
+
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+
+                const text = `
+    <b>New Message from Zidhugram Portfolio:</b>
+    --------------------------------------
+    <b>👤 Name:</b> ${name}
+    <b>📧 Email:</b> ${email}
+    <b>💬 Message:</b>
+    ${message}
+                `;
+
+                const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const payload = { chat_id: CHAT_ID, text, parse_mode: 'HTML' };
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.ok) {
+                        showFeedback('Message sent successfully! I’ll get back to you soon.', 'success');
+                        contactForm.reset();
+                    } else {
+                        throw new Error(result.description || 'Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    showFeedback(`Error: ${error.message}. Please try again later.`, 'error');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonContent;
+                }
+            });
+        }
         
         function showFeedback(message, type) {
-            formFeedback.textContent = message;
-            formFeedback.className = 'p-4 rounded-lg text-center font-semibold'; // Reset classes
-            
-            if (type === 'success') {
-                formFeedback.classList.add('bg-green-500/90', 'text-white');
-            } else if (type === 'error') {
-                formFeedback.classList.add('bg-red-500/90', 'text-white');
+            if(formFeedback) {
+                formFeedback.textContent = message;
+                formFeedback.className = 'p-4 rounded-lg text-center font-semibold'; // Reset classes
+                
+                if (type === 'success') {
+                    formFeedback.classList.add('bg-green-500/90', 'text-white');
+                } else if (type === 'error') {
+                    formFeedback.classList.add('bg-red-500/90', 'text-white');
+                }
+                
+                formFeedback.classList.remove('hidden');
+                setTimeout(() => {
+                    formFeedback.classList.add('hidden');
+                }, 5000);
             }
-            
-            formFeedback.classList.remove('hidden');
-            setTimeout(() => {
-                formFeedback.classList.add('hidden');
-            }, 5000);
         }
 
     </script>
