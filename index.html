@@ -329,13 +329,13 @@
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const BOT_TOKEN = 'YOUR_TELEGRAM_BOT_TOKEN';
-            const CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+            const BOT_TOKEN = '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk';
+            const CHAT_ID = '6303333846';
 
             const submitButton = contactForm.querySelector('button[type="submit"]');
             const originalButtonContent = submitButton.innerHTML;
 
-            if (BOT_TOKEN === 'YOUR_TELEGRAM_BOT_TOKEN' || CHAT_ID === 'YOUR_TELEGRAM_CHAT_ID') {
+            if (BOT_TOKEN === '8069693805:AAEbBGwU3kM35k5R4vlmpTt6LUC30_1dKXk' || CHAT_ID === '6303333846') {
                  showFeedback('Please configure the Telegram Bot Token and Chat ID in the script.', 'error');
                  return;
             }
