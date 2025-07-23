@@ -308,20 +308,16 @@
                 envelope: { attack: 0.01, decay: 0.2, sustain: 0.1, release: 0.2 }
             }).toDestination();
             
-            // --- FIX START: Debounce flag for hover sound to prevent errors ---
             let hoverSoundDebounce = false;
-            // --- FIX END ---
 
             const playClickSound = () => synth.triggerAttackRelease('C5', '8n', Tone.now());
             
-            // --- FIX START: Modified playHoverSound to use the debounce flag ---
             const playHoverSound = () => {
-                if (hoverSoundDebounce) return; // Don't play if already recently triggered
+                if (hoverSoundDebounce) return;
                 hoverSoundDebounce = true;
                 synth.triggerAttackRelease('C4', '16n', Tone.now(), 0.3);
-                setTimeout(() => { hoverSoundDebounce = false; }, 50); // Reset the flag after 50ms
+                setTimeout(() => { hoverSoundDebounce = false; }, 50);
             };
-            // --- FIX END ---
 
             const playAiResponseSound = () => synth.triggerAttackRelease('E5', '16n', Tone.now());
             
@@ -341,6 +337,11 @@
             const chatInput = document.getElementById('chat-input');
             const sendBtn = document.getElementById('chat-send-btn');
             
+            // --- FIX START: Added a clear variable for the API key ---
+            // IMPORTANT: You must get your own API key from Google AI Studio and paste it here.
+            const GEMINI_API_KEY = "AIzaSyBpiNETYFTne1tjtkB7oGbQjdTVJvy59H0"; // PASTE YOUR GEMINI API KEY HERE
+            // --- FIX END ---
+
             const personaPrompt = `You are Zidhu XD's Own AI Assistant on his personal portfolio web page named 'zidhugram'.ZidhuXD made you Your persona is that of a helpful,aesthetic and cozy cool AI assistant. You are representing a 16-year-old developer from Kerala, India. His skills are Web Development, Programming, Scripting, RAT Expert, App Modder, Bug Solving, Game Cracker, and AI Expert. His main projects are Insta-XD and Pussy-RAT. Be conversational and weave this information into your responses where appropriate (e.g., when asked about time or current events). Start your very first message with a friendly greeting like 'Hey there! I'm Zidhu's own personal AI . What's on your mind?'.`;
             
             let chatHistory = [{ role: "user", parts: [{ text: personaPrompt }] }, { role: "model", parts: [{ text: "Hey there! I'm Zidhu's AI clone. What's on your mind?" }] }];
@@ -382,11 +383,18 @@
                 chatWindow.appendChild(typingIndicator);
                 chatWindow.scrollTop = chatWindow.scrollHeight;
 
+                // --- FIX START: Check for API Key before sending request ---
+                if (!GEMINI_API_KEY) {
+                    chatWindow.removeChild(typingIndicator);
+                    addMessageToChat('ai', "The AI chat is not configured. The owner needs to add a Gemini API key to the code.");
+                    return;
+                }
+                // --- FIX END ---
+
                 chatHistory.push({ role: "user", parts: [{ text: userMessage }] });
 
                 try {
-                    const apiKey = ""; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
                     const payload = { contents: chatHistory };
 
                     const response = await fetch(apiUrl, {
@@ -395,7 +403,7 @@
                         body: JSON.stringify(payload)
                     });
 
-                    if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
+                    if (!response.ok) throw new Error(`API Error: ${response.status} ${response.statusText}`);
 
                     const result = await response.json();
                     chatWindow.removeChild(typingIndicator);
